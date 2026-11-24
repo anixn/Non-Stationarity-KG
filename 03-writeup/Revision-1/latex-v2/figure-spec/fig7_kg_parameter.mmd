@@ -1,0 +1,24 @@
+flowchart TB
+    subgraph S1["Climate zone-based behavioural parameter sets"]
+        A["Behavioural parameter<br/>pool {θ_x}"]
+        A --> B["Map {θ_x} to<br/>Köppen-Geiger climate zones<br/>(Gaussian copula per zone:<br/>empirical marginals +<br/>rank correlation, bounded)"]
+        B --> C["KG zone pools<br/>A - B - C - D - E"]
+    end
+    subgraph S2["Sampling behavioural parameter sets for a new climate scenario"]
+        D["Climate change scenario<br/>T* = T_HIST + Δt<br/>P* = P_HIST x Δp<br/>(121 ΔP x ΔT cells)"]
+        D --> E["Reclassify cell to<br/>Köppen-Geiger class"]
+        C -->|"for each climate<br/>change scenario"| E
+        E --> F["Sample behavioural<br/>parameter sets θ_x<br/>from the zone-matched pool"]
+    end
+    subgraph S3["Vulnerability recomputation"]
+        F --> G["Run HBV with θ_x<br/>in the bottom-up framework;<br/>compute catchment<br/>vulnerability threshold"]
+        G --> H["Compare with stationary-<br/>parameter framework (SPF)<br/>threshold"]
+    end
+    classDef data fill:#fdf6e3,stroke:#a6611a,color:#4a2c07
+    classDef model fill:#e8f1fa,stroke:#1f4e79,color:#0d2b45
+    classDef param fill:#eaf5ea,stroke:#2e6b2e,color:#123d12
+    classDef hypo fill:#fdf1e0,stroke:#a6611a,color:#4a2c07
+    class A,D data
+    class B,E,G model
+    class C,F param
+    class H hypo

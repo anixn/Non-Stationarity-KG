@@ -1,0 +1,27 @@
+flowchart TB
+    subgraph W1["Prevalence table (indicator classes, all 121 scenario cells)"]
+        A["Cell-wise indicator class<br/>(MAR, LFI, MAMF)<br/>from behavioural runs"]
+    end
+    subgraph W2["Primary estimator"]
+        B["Isotonic regression on<br/>marginal prevalence curve<br/>threshold = crossing at P = 0.5"]
+        A --> B
+        C["Logistic model on<br/>ΔP x ΔT scenario space<br/>threshold = P(class) = 0.5 contour"]
+        A --> C
+    end
+    subgraph W3["Independent cross-check"]
+        D["CART<br/>class ~ (dp, dt)<br/>minsplit / maxdepth honoured"]
+        A --> D
+    end
+    B --> E{"Agreement within<br/>one scenario cell?"}
+    C --> E
+    D --> E
+    E -->|"yes"| F["Report threshold<br/>(per catchment, per<br/>framework, per indicator)"]
+    E -->|"no"| G["Flag catchment;<br/>use estimator threshold,<br/>report CART split"]
+    classDef data fill:#fdf6e3,stroke:#a6611a,color:#4a2c07
+    classDef model fill:#e8f1fa,stroke:#1f4e79,color:#0d2b45
+    classDef hypo fill:#fdf1e0,stroke:#a6611a,color:#4a2c07
+    classDef check fill:#eaf5ea,stroke:#2e6b2e,color:#123d12
+    class A data
+    class B,C model
+    class D check
+    class E,F,G hypo

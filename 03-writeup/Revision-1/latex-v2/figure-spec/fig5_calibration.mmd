@@ -1,0 +1,14 @@
+flowchart TB
+    F["Forcing<br/>Temperature (T)<br/>Precipitation (P)<br/>Evapotranspiration (ET)"] --> M["Hydrological model<br/>(HBV, daily, 2-year warm-up)"]
+    P["Parameter sets (θ)<br/>10,000 LHS draws<br/>θ1 = {x1, y1, z1, ...}<br/>θ2 = {x2, y2, z2, ...}<br/>θ3 = {x3, y3, z3, ...}"] --> M
+    M --> Q["Simulated streamflow<br/>(Q_sim)"]
+    O["Observed streamflow<br/>(Q_obs)"] --> E["Evaluation metrics<br/>KGE ≥ 0.5<br/>|PBIAS| ≤ 25%<br/>(NSE reported, not screened)"]
+    Q --> E
+    E -->|"if metrics outside range<br/>resample θ"| M
+    E --> B["Behavioural parameter sets<br/>200 best-ranked per catchment<br/>(excluded if < 50 sets)"]
+    classDef data fill:#fdf6e3,stroke:#a6611a,color:#4a2c07
+    classDef model fill:#e8f1fa,stroke:#1f4e79,color:#0d2b45
+    classDef param fill:#eaf5ea,stroke:#2e6b2e,color:#123d12
+    class F,O data
+    class M,Q,E model
+    class P,B param

@@ -1,0 +1,24 @@
+flowchart TB
+    subgraph S1["Climate change scenario"]
+        A["Timeseries<br/>Precipitation (P)<br/>Temperature (T)"] --> B["Scenario grid<br/>T* = T_HIST + Δt<br/>P* = P_HIST × Δp"]
+    end
+    subgraph S2["Behavioural parameters"]
+        C["Behavioural<br/>Parameter Sets (θ_x)"]
+    end
+    subgraph S3["Hydrological model"]
+        B --> D["Hydrological Model<br/>(HBV)"]
+        C --> D
+        D --> E["Streamflow"]
+        E --> F["Streamflow-based indicators<br/>Drought: C1 C2 C3<br/>Flood: C3 C2 C1<br/>MAR: C1 C2 C3"]
+    end
+    subgraph S4["Vulnerability class mapping"]
+        F -->|"Classes for indicator"| G["Supervised ML<br/>(CART, RF, ...)"]
+        G --> H["Vulnerability class map<br/>T* = T_HIST + Δt<br/>P* = P_HIST × Δp"]
+        B --> H
+    end
+    classDef data fill:#fdf6e3,stroke:#a6611a,color:#4a2c07
+    classDef model fill:#e8f1fa,stroke:#1f4e79,color:#0d2b45
+    classDef param fill:#eaf5ea,stroke:#2e6b2e,color:#123d12
+    class A,B,F,H data
+    class D,E,G model
+    class C param

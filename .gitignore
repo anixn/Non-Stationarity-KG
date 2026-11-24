@@ -21,6 +21,16 @@ Thumbs.db
 03-writeup/Revision-1/latex/**/*.bbl
 03-writeup/Revision-1/latex/**/*.blg
 03-writeup/Revision-1/latex/**/*.xdv
+03-writeup/Revision-1/latex-v2/**/*.aux
+03-writeup/Revision-1/latex-v2/**/*.log
+03-writeup/Revision-1/latex-v2/**/*.out
+03-writeup/Revision-1/latex-v2/**/*.toc
+03-writeup/Revision-1/latex-v2/**/*.fls
+03-writeup/Revision-1/latex-v2/**/*.fdb_latexmk
+03-writeup/Revision-1/latex-v2/**/*.synctex.gz
+03-writeup/Revision-1/latex-v2/**/*.bbl
+03-writeup/Revision-1/latex-v2/**/*.blg
+03-writeup/Revision-1/latex-v2/**/*.xdv
 
 # Office temp files
 ~$*

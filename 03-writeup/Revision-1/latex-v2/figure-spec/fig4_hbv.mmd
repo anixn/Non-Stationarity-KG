@@ -1,0 +1,24 @@
+flowchart TB
+    subgraph M1["Climate inputs"]
+        IN["Precipitation (P)<br/>Temperature (T)<br/>Potential ET (PET)"]
+    end
+    IN --> SN["Snow process"]
+    E1["Melt = CFMAX x (T - TT),<br/>T > TT"] -.-> SN
+    E2["Refreeze = CFR x CFMAX x<br/>(TT - T)"] -.-> SN
+    E3["Drainage if WC > CWH x SP;<br/>SWE = SP + WC"] -.-> SN
+    SN -->|"water input (w)"| SO["Soil process"]
+    E4["AET = PET x min(1,<br/>SM/(LP x FC))"] -.-> SO
+    E5["Recharge<br/>R = w x (SM/FC)^beta"] -.-> SO
+    SO --> GW["GW flows"]
+    E6["Percolation =<br/>min(PERC, SUZ)"] -.-> GW
+    E7["Interflow = SUZ x k1;<br/>Baseflow = SLZ x k2;<br/>Shallow flow =<br/>max(0, (SUZ - UZL) x k0)"] -.-> GW
+    GW -->|"total flow (Q_gen)"| RT["Triangular weighting<br/>(MAXBAS)"]
+    RT --> Q["Routed streamflow (q)"]
+    classDef in fill:#fdf6e3,stroke:#a6611a,color:#4a2c07
+    classDef proc fill:#e8f1fa,stroke:#1f4e79,color:#0d2b45
+    classDef eq fill:#f5f5f5,stroke:#8a8a8a,color:#1f1f1f
+    classDef store fill:#eaf5ea,stroke:#2e6b2e,color:#123d12
+    class IN in
+    class SN,SO,GW,RT proc
+    class E1,E2,E3,E4,E5,E6,E7 eq
+    class Q store
