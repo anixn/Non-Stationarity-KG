@@ -1,5 +1,8 @@
 # latex-v2 — literature-updated LaTeX build (R2)
 
+> Writing session: use the repo-root [`../../../help.md`](../../../help.md) —
+> simple-language summary, editor keypoints, number cheat-sheet, figure map.
+
 Rebuilt manuscript with (1) the full R1 docx content preserved, (2) real
 BibTeX citations (`natbib` + `references.bib`, 152 entries), (3) the
 2022–2026 prior-art update in Introduction and Discussion, and (4) a
@@ -18,7 +21,7 @@ pdflatex -interaction=nonstopmode -output-directory=03-writeup/Revision-1/latex-
 pdflatex -interaction=nonstopmode -output-directory=03-writeup/Revision-1/latex-v2 03-writeup/Revision-1/latex-v2/manuscript.tex
 ```
 
-Output: `manuscript.pdf` (49 pages). All citations resolve; bibtex warnings
+Output: `manuscript.pdf` (50 pages). All citations resolve; bibtex warnings
 are cosmetic (three entries have no `journal` field: IPCC report, rpart
 manual, Wilby & Dessai chapter).
 

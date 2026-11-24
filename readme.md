@@ -1,4 +1,4 @@
- [CONCEPT](./concept.md) | [README](./readme.md) | [TODO](./todo.md) | [UPDATE](./updates.md)
+ [CONCEPT](./concept.md) | [README](./readme.md) | [TODO](./todo.md) | [UPDATE](./updates.md) | [HELP](./help.md) | [PROGRESS](./progress.md)
 
 # CZIPEF — project structure
 
@@ -19,23 +19,34 @@ in the project is executable. Superseded code and outputs were removed on
 │   └───📝 revision_figs.log
 │
 ├───📁 03-writeup
-│   ├───📁 Revision-1         ← manuscript, tables, SI, responses, LaTeX build
+│   ├───📁 Revision-1         ← manuscript (docx), tables, SI, responses, LaTeX builds
+│   │   ├───📁 latex          ← pandoc-based first LaTeX build
+│   │   └───📁 latex-v2       ← ★ current build: real BibTeX, prior-art update,
+│   │                             figure-spec set, synced captions (manuscript.pdf, 50 pp)
+│   ├───📁 prior-art          ← WOS search corpus + literature-gap notes
 │   ├───📁 references         ← KG_Bibliography.bib
 │   └───📝 …
 │
-├───📝 concept.md
-├───📝 readme.md
+├───📝 concept.md             ← research idea, filled and current
+├───📝 readme.md              ← this file
 ├───📝 todo.md
-└───📝 updates.md
+├───📝 updates.md             ← dated work journal
+├───📝 help.md                ← ★ writing-session help (keypoints, cheat-sheet, figure map)
+└───📝 progress.md            ← status snapshot per workstream
 ```
 
 ## Where to start
 
+- **Writing session:** [`help.md`](help.md) — simple-language summary, editor keypoints,
+  number cheat-sheet, figure/table map, terminology rules.
+- Project status: [`progress.md`](progress.md)
 - Pipeline manual: [`01-analysis/R/README.md`](01-analysis/R/README.md)
+- Current LaTeX build: [`03-writeup/Revision-1/latex-v2/README.md`](03-writeup/Revision-1/latex-v2/README.md)
+  (figures: [`latex-v2/figure-spec/FIGURES.md`](03-writeup/Revision-1/latex-v2/figure-spec/FIGURES.md))
 - Manuscript edit log: [`03-writeup/Revision-1/Manuscript-Edit-List.md`](03-writeup/Revision-1/Manuscript-Edit-List.md)
 - Response notes: [`03-writeup/Revision-1/Response-to-Reviewers-Notes.md`](03-writeup/Revision-1/Response-to-Reviewers-Notes.md)
 - Indicator and KG-map decisions: [`03-writeup/Revision-1/Indicator-and-KG-Map-Decisions.md`](03-writeup/Revision-1/Indicator-and-KG-Map-Decisions.md)
-- LaTeX build: [`03-writeup/Revision-1/latex/README.md`](03-writeup/Revision-1/latex/README.md)
+- Prior-art gap analysis: [`03-writeup/prior-art/LITERATURE_GAP_UPDATE.md`](03-writeup/prior-art/LITERATURE_GAP_UPDATE.md)
 
 ## Run
 

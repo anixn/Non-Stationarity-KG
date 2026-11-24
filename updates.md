@@ -1,6 +1,42 @@
- [CONCEPT](./concept.md) | [README](./readme.md) | [TODO](./todo.md) | [UPDATE](./updates.md)
+ [CONCEPT](./concept.md) | [README](./readme.md) | [TODO](./todo.md) | [UPDATE](./updates.md) | [HELP](./help.md) | [PROGRESS](./progress.md)
 
 # Weekly Research Journal Update
+
+> 24 November 2026 | Tuesday | Figure/caption/text sync + writing help docs
+- Audited every figure caption and cross-reference in
+  `03-writeup/Revision-1/latex-v2/manuscript.tex` against the rendered figures
+  and the pipeline tables (T3–T9b); fixed all mismatches:
+  - Figs 1–2 (new ggplot maps): captions and body text rewritten to the actual
+    legends (Fig 2: red cross = 222 analysed, blue = 110 candidate-only — the
+    old text inverted the legend).
+  - Fig 6 (now the estimator + CART cross-check workflow, not the rpart tree):
+    caption and §3.1 text rewritten; the stale "USID: 01439500 / dashed red
+    line" description removed.
+  - Figs 11–12 (now three panels MAR/LFI/MAMF): captions and Results text
+    updated; added panel-level decomposition from T8 (LFI 2/17/22, slope 0.76,
+    R2 = 0.50; MAMF 3/4/10, slope 1.33, R2 = 0.77).
+  - Fig 7 caption rewritten (was garbled); Fig 3 caption now points to the
+    isotonic/logistic + CART implementation; Fig 4 note added for the fixed
+    snow constants CFR/CWH/SP that Table 2 does not list.
+- Text–table fixes: "+2 °C between 16% and 37%" → 24–37% (T5b); MAR
+  significance claims aligned with T9 (CFMAX not significant in Cfb; LFI
+  recurring = beta, LP, k2); Table 6 ΔR² sentence now 0.06–0.09 (p < 0.01)
+  for beta/LP/TT/k2 and 0.06 for PERC with MAXBAS/CFMAX not significant;
+  "three to six parameters per indicator" scoped to MAR; "Table 7" →
+  "Tables 7 and 7b"; MAXBAS added to the physiography lists in 5.1/5.2.
+- Mechanics: removed the duplicated SPF paragraph (§3.1), renamed PBE →
+  PBIAS in eq. (5), fixed the dangling sentence before Fig. 7, grammar pass
+  (LHS/PET/calibration sentences), `$\\pm$` → `$\pm$` in the S3 caption,
+  unified R2 → R$^2$ everywhere.
+- Rebuilt `manuscript.pdf`: 50 pages, zero unresolved citations, zero
+  overfull boxes; 3 cosmetic bibtex warnings (as before).
+- Writing-session documentation: new `help.md` (simple-language summary,
+  3–4 editor keypoints, "what to highlight", number cheat-sheet traceable to
+  tables, figure/table map, terminology rules, reviewer-proofing limits,
+  build commands) and `progress.md` (per-workstream status); filled
+  `concept.md` (was an empty template); updated `readme.md`, `todo.md`.
+- Git: committed and pushed as "Sync figure captions/text with rendered
+  figures and tables; add writing-session help docs".
 
 > 20 November 2026 | Friday | Project cleanup
 - Removed the superseded code and outputs (moved to the temp trash folder, so

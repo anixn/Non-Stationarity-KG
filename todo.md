@@ -3,7 +3,7 @@
 
 # Todo List for Paper
 
-📅 Updated: 19 November 2026
+📅 Updated: 24 November 2026
 
 ## 🔴 Revision 1 — high priority (reviewer-driven)
 
@@ -48,12 +48,42 @@
       (`03-writeup/Revision-1/Indicator-and-KG-Map-Decisions.md`)
 - [x] Beck et al. (2023) classes are used as a delta-change scheme for the KG
       map; no raster comparison is claimed
-- [x] Analysed sample = whatever passes calibration (~300); manuscript says so
+- [x] Analysed sample = 222 of 332 candidates; manuscript says so
 - [x] KG delta-change map grid = ΔP −50%/0/+50% × ΔT +1.5/+2/+3/+4 °C
-- [x] Manuscript also maintained in LaTeX (`03-writeup/Revision-1/latex/`)
+- [x] Manuscript also maintained in LaTeX (`03-writeup/Revision-1/latex-v2/`,
+      current build with real BibTeX and the prior-art update)
+
+## 🟢 Figure / caption / documentation sync — done 24 Nov 2026
+
+- [x] Render the five conceptual figures from `latex-v2/figure-spec/*.mmd`
+      (pele → flattened SVG → rsvg PDF/PNG) and wire into `manuscript.tex`
+- [x] Audit every figure caption against the rendered figure; sync stale
+      captions (Figs 1–2 legend direction, Fig 6 workflow vs tree, Fig 7
+      garbled caption, Figs 11–12 three-panel layout, Fig 3/CART note,
+      Fig 4 fixed CFR/CWH/SP constants)
+- [x] Fix text–table mismatches: +2 °C class-change range (24–37%), Table 9
+      significance claims (CFMAX not in Cfb; LFI recurring = beta/LP/k2),
+      Table 6 ΔR² sentence with p-values, "three to six parameters" scoped
+      to MAR, Table 7 → Tables 7/7b
+- [x] Remove duplicated SPF paragraph; PBE → PBIAS in eq. (5); unify R²
+      typography; fix `$\\pm$` bug in the S3 caption; grammar pass in
+      §2, §3.1, §3.2
+- [x] Rebuild `manuscript.pdf` (50 pp, zero unresolved citations)
+- [x] Write `help.md` (writing-session doc: keypoints, cheat-sheet, figure
+      map) and `progress.md`; fill `concept.md`; update `readme.md`,
+      `todo.md`, `updates.md`
+
+## 🔴 Submission preparation (next)
+
+- [ ] Draft the cover letter from `help.md` §2 (3–4 editor keypoints)
+- [ ] Switch bibliography from `apalike` to the target journal's style
+- [ ] Final submission-format pass (line numbers, figures as vector PDF
+      where the journal allows, highlight/declaration pages)
+- [ ] Verify `verify_v2.py` output zero unresolved citations after any
+      regeneration from `prior-art/build_v2.py`
 
 ## 🟢 Low Priority
 - [ ] Add a supplementary table of all calibration metrics
-- [ ] Add a robustness test with an alternative PET method
+- [ ] Add a robustness test with an alternative PET method (Hamon)
 - [x] Delete `02-outputs/legacy/`, `02-outputs/smoke/`, the old `.Rmd` chain and
       the superseded CART PDFs (20 Nov 2026; project now 128 MB)

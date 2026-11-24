@@ -141,7 +141,7 @@ form the analysed sample. For mean annual runoff, the climate
 zone-informed framework changes the precipitation threshold in 72\% of
 these catchments (38\% higher and 34\% lower than the stationary
 framework, 28\% identical), but the median difference is zero and the
-two thresholds agree only weakly (slope 0.31, R2 = 0.14). The
+two thresholds agree only weakly (slope 0.31, R$^2$ = 0.14). The
 temperature threshold is identifiable in fewer than 7\% of catchments,
 and the supplementary low-flow and high-flow indicators give
 identifiable precipitation thresholds in only 10-26\% of catchments, so
@@ -520,33 +520,33 @@ E (Polar) & T (Tundra) & ~ & ET \\
 \begin{figure}
 \centering
 \includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/media/media/image1.png}
-\caption{Selected catchments are shown in the figure. Each
-green doesn't represent the centroid of the catchment, and the size of
-the dot indicates the Area (km\textsuperscript{2}) of the catchment.}
+\caption{Analysed catchments. Green circles mark the 222 catchments
+that passed the calibration and climate-zone requirements and grey
+circles the candidate-only catchments; the size of each dot indicates
+the catchment area (km\textsuperscript{2}).}
 \end{figure}
 
-The catchments used in the study are shown in Fig. 1; a total of 332
-candidate catchments is selected, each circle marks the catchment
-centroid and its size gives the catchment area in km2. The initial
-inventory of 671 CAMELS catchments is spatially heterogeneous, with
-clusters in the western and eastern United States (Fig. 2). To obtain a
-representative sample for the 30-year daily simulation, the study domain
-is partitioned into a uniform 1° × 1° grid and one catchment is selected
-from each cell, which gives 332 candidates with even spatial coverage;
-in Fig. 2 blue circles denote the full inventory and red crosses the
-selected subset. For each selected catchment, daily precipitation and
-minimum and maximum temperature are acquired for 1 January 1981 to 31
-December 2010. Of these, the catchments that satisfy the calibration and
-climate-zone requirements of Sections 3.1 and 3.2 form the analysed
-sample of 222 catchments (Section 4.1).
+The analysed catchments are shown in Fig. 1 and the candidate set in
+Fig. 2. The initial inventory of 671 CAMELS catchments is spatially
+heterogeneous, with clusters in the western and eastern United States.
+To obtain a representative sample for the 30-year daily simulation, the
+study domain is partitioned into a uniform 1° × 1° grid and one
+catchment is selected from each cell, which gives 332 candidates with
+even spatial coverage; in Fig. 2 red crosses denote the 222 analysed
+catchments and blue circles the 110 candidate-only catchments. For each
+selected catchment, daily precipitation and minimum and maximum
+temperature are acquired for 1 January 1981 to 31 December 2010. Of
+these, the catchments that satisfy the calibration and climate-zone
+requirements of Sections 3.1 and 3.2 form the analysed sample of 222
+catchments (Section 4.1).
 
 \begin{figure}
 \centering
 \includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/media/media/image2.png}
-\caption{Selection of catchments from all 671 catchments of
-the CAMELS dataset. The blue circle shows all the catchments, and the
-red cross represents the selected catchment based on the criteria for
-one catchment from each 1°× 1° grid.}
+\caption{Candidate catchments and the analysed sample. Blue circles
+mark the 110 candidate-only catchments and red crosses the 222 analysed
+catchments; both are drawn from the 332 candidates selected as one
+catchment per 1° × 1° grid cell from the 671 CAMELS catchments.}
 \end{figure}
 
 \section{3. Methodology}\label{methodology}
@@ -616,7 +616,10 @@ hydrological systems under diverse climatic scenarios.
 \centering
 \includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/figures/fig3_framework.png}
 \caption{Bottom-up framework with an exploratory climate change
-approach workflow to assess the catchment vulnerability.}
+approach workflow to assess catchment vulnerability. In the
+implementation used here, the vulnerability class mapping is estimated
+with isotonic and logistic prevalence models and cross-checked with CART
+(Fig. 6).}
 \end{figure}
 
 In order to validate the hydrological model within the catchment
@@ -644,8 +647,8 @@ required for large-scale catchment vulnerability assessments.
 \begin{figure}
 \centering
 \includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/figures/fig4_hbv.png}
-\caption{Conceptual Hydrological Model Flowchart for HBV model
-utilized in the study.}
+\caption{Conceptual structure of the HBV model used in the study,
+with the governing equations of each module.}
 \end{figure}
 
 The HBV model is divided into discrete modules describing soil moisture
@@ -657,14 +660,18 @@ precipitation is partitioned into evapotranspiration, infiltration, and
 runoff. Parameters SFCF, TT, and CFMAX provide thorough snow hydrology
 modeling by differentiating between snowfall and rainfall and simulating
 snowmelt through degree-day approaches adapted to local temperature
-conditions. The constants k0, k1, k2, UZL, and PERC characterize
+conditions. The parameters k0, k1, k2, UZL, and PERC characterize
 subsurface flow pathways and regression behaviors, which are critical
 for distinguishing between fast and slow runoff components as well as
 groundwater recharge. Lastly, MAXBAS controls the streamflow response
 through routing functions that delay and smooth hydrograph peaks,
 ensuring that simulated discharge coincides closely with observed flow
-timing. The model parameters ranges used in the study provided in Table
-2, range are majorly adopted from \citep{seibert1999conceptual,seibert2012teaching}.
+timing. The parameter ranges used in the study are provided in Table 2 and are
+mainly adopted from \citep{seibert1999conceptual,seibert2012teaching}.
+The snow routine additionally uses the fixed refreeze coefficient CFR
+and the water-holding capacity CWH of the snowpack, together with the
+snowpack state SP, which appear in Fig. 4; these are implementation
+constants of the HBV structure rather than calibrated parameters.
 
 \begin{longtable}[]{@{}
   >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1675}}
@@ -726,8 +733,8 @@ generate coherent parameter sets. The LHS provides significantly better
 coverage of the multidimensional parameter space compared to uniform
 random sampling designs, making it particularly advantageous when
 parameter-specified values are computationally restricted. The generated
-parameter sets are used is used in conjunction with climatic~time series
-data to simulate catchment runoff responses and, the simulated runoff
+parameter sets are used in conjunction with the climatic time series to
+simulate catchment runoff responses, and the simulated runoff is
 evaluated against observed discharge data using established performance
 metrics, including the Kling-Gupta Efficiency (KGE), Nash-Sutcliffe
 Efficiency (NSE), and percentage bias (PBIAS), to systematically
@@ -740,14 +747,14 @@ model is calibrated, and behavioral parameter sets are identified.
 \begin{figure}
 \centering
 \includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/figures/fig5_calibration.png}
-\caption{Methodology adopted for the hydrological model using
-Monte-Carlo Calibration.}
+\caption{Monte-Carlo calibration methodology adopted for the
+hydrological model.}
 \end{figure}
 
 To simulate runoff efficiently, potential evapotranspiration (PET) data
-is essential. Although the long-term historical PET data is provided by
-CAMELS dataset, but study required the methodology to compute PET time
-series as the climate change induced using delta change method. The
+is essential. Although the CAMELS dataset provides long-term historical
+PET, the study requires a method to compute PET time series under the
+climate change induced by the delta-change method. The
 present investigation explored two widely used methods for PET
 estimation, the Hamon and Hargreaves approaches, because of~their
 relatively simple data requirements, which consist of simply daily
@@ -894,7 +901,7 @@ variability inconsistencies.
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\[\text{PBE} = \frac{\sum_{i = 1}^{n}\left( O_{i} - S_{i} \right)}{\sum_{i = 1}^{n}O_{i}} \times 100\%\]
+\[\text{PBIAS} = \frac{\sum_{i = 1}^{n}\left( O_{i} - S_{i} \right)}{\sum_{i = 1}^{n}O_{i}} \times 100\%\]
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 (5)
 \end{minipage} \\
@@ -905,11 +912,11 @@ variability inconsistencies.
 \end{longtable}
 }
 
-Further, for the model calibration procedure, limiting PBIAS to
-\(\pm 25\%\) and KGE ≥ 0.5, then simulate streamflow for 10,000 Latin
-hypercube parameter combinations. NSE is reported but is not used to
-screen, and the 200 best-ranked behavioural sets are retained per
-catchment. Catchments that do not produce at least 50 behavioural
+For the calibration procedure, streamflow is simulated for 10,000 Latin
+hypercube parameter combinations per catchment, and behavioural sets are
+limited to KGE ≥ 0.5 and PBIAS within \(\pm 25\%\). NSE is reported but
+is not used to screen, and the 200 best-ranked behavioural sets are
+retained per catchment. Catchments that do not produce at least 50 behavioural
 parameter sets are excluded. Table 3 reports the calibration performance
 and Table 4 the split-sample results. Calibration uses 1981--2010 with a
 two-year warm-up; temporal transferability is tested separately with
@@ -963,27 +970,36 @@ size or maximum tree depth, are fulfilled \citep{therneau2019rpart}.
 The selection of the vulnerability threshold therefore reduces to
 estimating the magnitude of climatic change that makes the most
 vulnerable class (Class 3) the most likely outcome for the selected
-indicator. A typical CART result, which classifies indicator
-vulnerability classes from delta changes in temperature and
-precipitation and from model parameters, is shown in Fig. 6. The tree
-started at a single root node, wherein the entire dataset is partitioned
-according to a threshold criterion applied to the inputs (\(dp\), \(dt\)
-and parameters). Each subsequent internal node executes a binary split,
-leading observations either left or right based on whether the
-associated feature value satisfies the specified threshold. This
-continuous bifurcation continues until terminal nodes (leaves) are
-reached, which assign the final class labels. The cross-check weights
-each terminal node by its sample size, so that the reported values
-reflect the relative prevalence of the most vulnerable class in the
-tree, for detailed understanding the vulnerability threshold computation
-for precipitation and temperature check \citep{deshmukh2016physio}.
+indicator. The estimation and cross-check workflow is shown in Fig. 6:
+the cell-wise indicator classes of the 121 scenario cells feed two
+primary estimators, the isotonic regression on the marginal prevalence
+curve, whose threshold is the crossing at probability 0.5, and the
+logistic model on the precipitation--temperature scenario space, whose
+threshold is the probability = 0.5 contour. As an independent
+cross-check, a CART classification tree maps the perturbed precipitation
+and temperature of each scenario cell to the indicator classes. The CART
+algorithm is a recursive partitioning approach for supervised learning
+problems: starting from a root node that contains the full dataset, each
+internal node executes a binary split on a predictor (\(dp\), \(dt\))
+that maximises the impurity reduction, and the bifurcation continues
+until terminal nodes assign the final class labels. The cross-check
+weights each terminal node by its sample size, so that the reported
+values reflect the relative prevalence of the most vulnerable class in
+the tree. When the estimators and the CART split agree within one
+scenario cell, the estimator threshold is reported; otherwise the
+catchment is flagged and the CART split is reported alongside it. For a
+detailed description of the vulnerability threshold computation for
+precipitation and temperature see \citep{deshmukh2016physio}.
 
 \begin{figure}
 \centering
 \includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/figures/fig6_cart_crosscheck.png}
-\caption{Binary tree classification of class distribution for
-MAR for catchment (USID: 01439500). The path of the most vulnerable
-class is shown with the dashed red line.}
+\caption{Threshold estimation and cross-check workflow. The
+cell-wise indicator classes from the 121 scenario cells are mapped to
+thresholds with isotonic regression and a logistic model, and
+independently cross-checked with a CART classification tree; the
+reported threshold is the estimator value when the approaches agree
+within one scenario cell.}
 \end{figure}
 
 \emph{The procedure described above for determining catchment
@@ -994,14 +1010,6 @@ change-induced parameter non-stationarity, as behavioral parameter sets
 remain fixed throughout all climate scenarios, assuming temporal
 invariance of model parameters.}
 
-The method demonstrated above for establishing catchment vulnerability
-thresholds for precipitation and temperature in the context of climate
-change is referred to as the Stationary Parameter Framework (SPF). This
-methodology does not account for non-stationarity of parameters by
-climate change, as the behavioural parameter sets are maintained
-constant across all climate scenarios, supposing temporal invariance of
-model parameters.
-
 \subsection{\texorpdfstring{3.2 Climate Zone-Informed Parameter
 Evolution Framework (CZIPEF) for catchment vulnerability assessment
 under climate change
@@ -1011,10 +1019,11 @@ The procedure used to determine the catchment vulnerability threshold
 for precipitation and temperature under climate change is shown in the
 previous section, and the vulnerability thresholds are computed
 employing the specified approach, which does not incorporate the climate
-change-based parametric stationarity. To incorporate not stationarity in
-the vulnerability quantification, the study employs the Köppen-Geiger
-climate classification to sample the new parameter sets if the
-catchment\textquotesingle s climate zone changes due to climate change.
+change-induced parameter non-stationarity. To incorporate parameter
+non-stationarity in the vulnerability quantification, the study employs
+the Köppen-Geiger climate classification to sample new parameter sets
+whenever the catchment\textquotesingle s climate zone changes due to
+climate change.
 
 The Köppen-Geiger climate classification constitutes one of the most
 widely recognized and widely utilized frameworks for categorizing the
@@ -1042,21 +1051,23 @@ To incorporate model parametric non-stationarity resulting from a
 catchment's shift in its historical Köppen-Geiger classification due to
 climate change, behavioral parameter sets are sampled again from pooled
 parameter sets corresponding to the catchment's updated Köppen-Geiger
-climate zone, for example, catchments historical climate zone is Cfa and
-after applying climate change the new climate change is BSk then for
-this particular climate change case parameter sets will be sampled from
-BSk corresponding pooled parameter sets. The resampling process and
-establishing behavioral parameters for each potential Köppen-Geiger
-Class appropriate to the study area is presented in Figure 7. The
+climate zone; for example, if a catchment's historical climate zone is
+Cfa and a scenario reclassifies it to BSk, parameter sets are sampled
+from the pooled BSk parameter sets. The resampling process and the
+establishment of behavioural parameter sets for each potential
+Köppen-Geiger class relevant to the study area are presented in
+Figure 7.
 
 \begin{figure}
 \centering
 \includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/figures/fig7_kg_parameter.png}
-\caption{The flowchart explains the incorporation of the
-Köppen-Geiger climate classification with an exploratory modelling
-framework. After mapping behavioral parameter sets to the climate
-classification and resampling from the parameters of the catchment show
-the climate change is shown under synthetic climate cases.}
+\caption{Incorporation of the Köppen-Geiger climate classification
+into the exploratory modelling framework. Behavioural parameter sets are
+mapped to climate-zone pools with a Gaussian copula fitted per zone; for
+each synthetic climate scenario the destination cell is reclassified and
+behavioural parameter sets are resampled from the zone-matched pool; the
+vulnerability threshold is then recomputed and compared with the SPF
+threshold.}
 \end{figure}
 
 For each analysed catchment, the retained behavioural parameter sets
@@ -1121,7 +1132,7 @@ of 0.5, 1.0 and 1.5 crossed with warming of +1.5, +2, +3 and +4 °C, and
 Table 5b summarises how many catchments change class at each level. At
 +4 °C, 50\% of catchments change class without a precipitation change,
 58\% under a 50\% reduction and 51\% under a 50\% increase; at +1.5 °C
-the corresponding shares are 16\%, 30\% and 19\%. At +2 °C between 16\%
+the corresponding shares are 16\%, 30\% and 19\%. At +2 °C between 24\%
 and 37\% of catchments change class depending on the precipitation
 multiplier, against 50-58\% at +4 °C.
 
@@ -1201,9 +1212,9 @@ precipitation. A threshold of 0.9 or more, where a reduction of only
 about 10\% is enough, occurs in 14 catchments under SPF but in only one
 under CZIPEF. Both panels share the same broad spatial pattern, as
 expected, because both use the same observed climate and the same pools
-of behavioural parameter sets; Table 7 gives the thresholds and their
-identifiability for all three indicators, and the difference between the
-frameworks is examined in Figs. 11 and 12.
+of behavioural parameter sets; Tables 7 and 7b give the thresholds and
+their identifiability for all three indicators, and the difference
+between the frameworks is examined in Figs. 11 and 12.
 
 The map shows no aridity gradient. Median thresholds are 0.78 in the
 wettest quartile of catchments (aridity below 3.6) and 0.77 in the
@@ -1233,47 +1244,55 @@ one catchment and lower it in a neighbouring one.
 \begin{figure}
 \centering
 \includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/media/media/image11.png}
-\caption{SPF against CZIPEF precipitation thresholds for MAR
-(n = 217). Grey circles are catchments, the red dotted line is the 1:1
-line and the navy dotted line is the ordinary least squares fit (y =
-0.505 + 0.309x, R2 = 0.14).}
+\caption{SPF against CZIPEF precipitation thresholds by indicator:
+MAR (primary), LFI and MAMF (supplementary). Grey circles are
+catchments, the red dashed line is the 1:1 line and the blue line is the
+ordinary least squares fit (for MAR: y = 0.505 + 0.309x, R$^2$ = 0.14,
+n = 217).}
 \end{figure}
 
-The scatter plot in Fig. 11 compares the SPF threshold (x-axis) with the
-CZIPEF threshold (y-axis). Each grey point is a catchment, the red
-dotted line is the 1:1 reference and the navy dotted line is the
-ordinary least squares fit. The regression is y = 0.505 + 0.309x with R2
-= 0.14 (n = 217, p \textless{} 0.001), a weak positive association
-between the two thresholds. The slope of 0.309 shows that a 0.1 increase
-in the SPF threshold corresponds to only about a 0.03 increase in the
-CZIPEF threshold, and points lie on both sides of the 1:1 line (38\%
-above, 34\% below), so the CZIPEF threshold is not systematically lower
-than the SPF threshold. The wide scatter around the regression line
-shows that the framework changes individual thresholds substantially
-even though the pooled relationship is weak; the low R2 means that the
-two thresholds are not interchangeable.
+The scatter plots in Fig. 11 compare the SPF threshold (x-axis) with the
+CZIPEF threshold (y-axis) for the three indicators. For the primary
+indicator, each grey point is a catchment, the red dashed line is the
+1:1 reference and the blue line is the ordinary least squares fit. The
+regression is y = 0.505 + 0.309x with R$^2$ = 0.14 (n = 217,
+p \textless{} 0.001), a weak positive association between the two
+thresholds. The slope of 0.309 shows that a 0.1 increase in the SPF
+threshold corresponds to only about a 0.03 increase in the CZIPEF
+threshold, and points lie on both sides of the 1:1 line (38\% above, 34\%
+below), so the CZIPEF threshold is not systematically lower than the SPF
+threshold. The wide scatter around the regression line shows that the
+framework changes individual thresholds substantially even though the
+pooled relationship is weak; the low R$^2$ means that the two thresholds
+are not interchangeable. For the supplementary indicators the paired
+thresholds are far fewer (n = 41 for LFI and n = 17 for MAMF) but the
+association is stronger (LFI: slope 0.76, R$^2$ = 0.50; MAMF: slope
+1.33, R$^2$ = 0.77), reflecting the smaller and more selected samples
+rather than a stronger framework effect.
 
 \begin{figure}
 \centering
 \includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/media/media/image12.png}
-\caption{Direction of the SPF-CZIPEF difference in the MAR
-precipitation threshold. Red circles mark catchments where the CZIPEF
-threshold is higher, green where it is lower and blue where the two
-thresholds are identical.}
+\caption{Direction of the SPF-CZIPEF difference in the precipitation
+threshold by indicator: MAR (primary), LFI and MAMF (supplementary). Red
+circles mark catchments where the CZIPEF threshold is higher, green
+where it is lower and blue where the two thresholds are identical.}
 \end{figure}
 
-The difference between the SPF and CZIPEF precipitation thresholds for
-MAR is mapped in Fig. 12. Red circles mark catchments where the CZIPEF
-threshold is higher (the catchment tolerates less drying before becoming
-vulnerable; 83 catchments), green circles where it is lower (74) and
-blue circles where the two thresholds are identical (60). The map is
-spatially heterogeneous and shows no regional coherence: higher and
-lower thresholds occur side by side in the Great Plains, the Midwest and
-the west. The paired thresholds are only weakly related overall (slope
-0.31, R2 = 0.14) and the median difference is zero, so CZIPEF does not
-shift vulnerability in one direction (Table 8). LFI and MAMF have paired
-thresholds for only 41 and 17 catchments, so their maps are sparse and
-support no regional interpretation.
+The difference between the SPF and CZIPEF precipitation thresholds is
+mapped in Fig. 12 for the three indicators. For MAR, red circles mark
+catchments where the CZIPEF threshold is higher (the catchment tolerates
+less drying before becoming vulnerable; 83 catchments), green circles
+where it is lower (74) and blue circles where the two thresholds are
+identical (60). The MAR map is spatially heterogeneous and shows no
+regional coherence: higher and lower thresholds occur side by side in
+the Great Plains, the Midwest and the west. The paired thresholds are
+only weakly related overall (slope 0.31, R$^2$ = 0.14) and the median
+difference is zero, so CZIPEF does not shift vulnerability in one
+direction (Table 8). LFI and MAMF have paired thresholds for only 41 and
+17 catchments (2 higher, 17 lower and 22 equal for LFI; 3 higher, 4
+lower and 10 equal for MAMF), so their maps are sparse and support no
+regional interpretation.
 
 Fig. 13 shows the cumulative distribution functions (CDFs) of the pooled
 behavioural parameter sets for every Köppen-Geiger class with a
@@ -1315,8 +1334,10 @@ SFCF (11\%) and TT (15\%). Physiography explains more than climate for
 beta (39\% against 29\%), k0 (47\% against 34\%), PERC (48\% against
 34\%), UZL (53\% against 32\%) and MAXBAS (31\% against 6\%). Adding
 climate-zone membership to a physiography-only model raises the
-explained variance by 0.03-0.09 for beta, LP, TT, k2 and PERC but by
-only 0.03 for MAXBAS and CFMAX, and a random forest on the same
+explained variance by 0.06-0.09 for beta, LP, TT and k2 and by 0.06 for
+PERC (all p \textless{} 0.01), but by only 0.03 for MAXBAS and CFMAX,
+where the gain is not significant (p = 0.42 and p = 0.12); a random
+forest on the same
 attributes (Fig. S7) ranks mean precipitation, snow fraction and
 available water storage highest for FC, consistent with the variance
 partitioning. Parameter values are therefore jointly controlled by
@@ -1342,12 +1363,15 @@ computed for the three vulnerability indicators, MAR, LFI and MAMF. Fig.
 14 shows MAR; Fig. S8 shows LFI and MAMF, and Table 9 summarises which
 parameters are significant in each class and indicator.
 
-For MAR, beta, FC and LP are significant in every class, and CFMAX, SFCF
-and TT join them in Cfb, Dfa, Dfb and Dfc (Table 9). The Sobol indices
+For MAR, beta, FC and LP are significant in every class; SFCF and TT
+join them in Cfb, Dfa, Dfb and Dfc, and CFMAX additionally in the three
+snow-influenced continental classes Dfa, Dfb and Dfc (Table 9). The
+Sobol indices
 agree with the PRCC ranking: for the BSk catchment the first-order
 indices are 0.64 for FC, 0.33 for beta and 0.12 for LP, while the
 remaining nine parameters have total indices below 0.002. For LFI, beta,
-FC, LP, k1 and k2 recur across classes, with TT, CFMAX and SFCF entering
+LP and k2 recur in all six classes, FC and k1 in most of them, with TT,
+CFMAX and SFCF entering
 where snow is important. MAMF is the most parameter-rich indicator:
 eight to ten parameters are significant in Cfb, Dfa, Dfb and Dfc, and
 MAXBAS is significant only in Cfa, where routing has a stronger
@@ -1408,7 +1432,7 @@ performance and reduces projection uncertainty.
 
 This directionally unstructured outcome is consistent with the newest transferability evidence and extends it from model performance to vulnerability. \citet{jahanshahi2022transferability} and \citet{jahanshahi2026multicatchment} show that rainfall--runoff model transferability depends strongly on climate conditions, with the largest degradations across hydroclimatic contrasts; \citet{duethmann2020conceptualfail} attribute conceptual-model failures under climate change to parameters that cannot absorb regime changes; and \citet{bohl2026hybridgeneralize} find that generalization to warmer climates remains the binding constraint for process-based models. CZIPEF adds a threshold-level consequence to this literature: when the parameter pool is redefined by climate class rather than frozen, the estimated vulnerability threshold moves in 72\% of catchments, in either direction, so a stationary-parameter study risks overstating vulnerability in some catchments and understating it in others. The weak pooled regression (slope 0.31, R$^2$ = 0.14) is therefore not a null result about the method but a statement about its spatial structure: the correction is catchment-specific and climatically patterned, which pooled metrics conceal.
 
-The regression equation y = 0.505 + 0.309x, R2 = 0.138 between SPF and
+The regression equation y = 0.505 + 0.309x, R$^2$ = 0.138 between SPF and
 CZIPEF precipitation thresholds shows that climate-zone-based resampling
 changes individual vulnerability estimates substantially, although the
 pooled relationship is weak and its direction is not systematic. The
@@ -1430,7 +1454,8 @@ behavioural parameter distributions across climate zones shows that FC,
 beta, CFMAX, SFCF and TT separate most strongly between zones, while k0,
 k1, k2, UZL and PERC separate least; the variance partitioning in Table
 6 shows that this separation is only partly climatic, because
-physiography explains more of the variation in beta, k0, PERC and UZL.
+physiography explains more of the variation in beta, k0, PERC, UZL and
+MAXBAS.
 This parameter-climate relationship pattern offers significant insights
 into the physical processes controlling catchment response. The
 separation of FC between classes reflects differences in soil-atmosphere
@@ -1475,7 +1500,8 @@ perspectives on parameter significance. Further, PRCC efficiently
 determines parameter classification for calibration purposes, while
 Sobol indices measure interaction effects that are particularly relevant
 in systems with strong threshold behavior \citep{pianosi2016sensitivity,saltelli2008global}. The finding that three to six of the twelve
-parameters dominate each indicator implies that the HBV model structure
+parameters dominate the primary indicator (MAR), with the supplementary
+indicators drawing on more parameters, implies that the HBV model structure
 properly represents the primary processes controlling catchment~response
 across diverse climate zones. Parameter resampling from the
 climate-specific pools uses a Gaussian copula rather than a univariate
@@ -1486,7 +1512,7 @@ parameter evolution keeps the physical consistency of the calibration
 while allowing the distribution to change with the climate regime
 \citep{scott2015multivariate,silverman1998density}.
 
-Compared with time-varying parameter approaches, the climate-zone conditioning used here is deliberately coarser but interpretable and transferable. Time-varying frameworks recover continuous parameter trajectories from the hydrological record itself \citep{wallner2015somb,zhangTimevaryingParameterEstimation2021,krapu2022differentiable,zhou2022tvpdiagnosis,liu2025budykotvp}, which requires long in-catchment data and provides no rule for a catchment whose class membership changes under a scenario it has never experienced. The variance partitioning in Table 6 quantifies exactly this tension: climate zones carry a substantial but partial share of parameter variation, and physiography explains more for beta, k0, PERC and UZL, so a purely climatic reparameterization would overstate parameter change in physiographically controlled catchments. CZIPEF's parameter pools therefore act as a bounded, class-conditional prior rather than a fitted trajectory, which is also why the sensitivity results (three to six dominant parameters per indicator) are stable across zones.
+Compared with time-varying parameter approaches, the climate-zone conditioning used here is deliberately coarser but interpretable and transferable. Time-varying frameworks recover continuous parameter trajectories from the hydrological record itself \citep{wallner2015somb,zhangTimevaryingParameterEstimation2021,krapu2022differentiable,zhou2022tvpdiagnosis,liu2025budykotvp}, which requires long in-catchment data and provides no rule for a catchment whose class membership changes under a scenario it has never experienced. The variance partitioning in Table 6 quantifies exactly this tension: climate zones carry a substantial but partial share of parameter variation, and physiography explains more for beta, k0, PERC, UZL and MAXBAS, so a purely climatic reparameterization would overstate parameter change in physiographically controlled catchments. CZIPEF's parameter pools therefore act as a bounded, class-conditional prior rather than a fitted trajectory, which is also why the sensitivity results (three to six dominant parameters for MAR) are stable across zones.
 
 \subsection{\texorpdfstring{5.3 Implications for Water Resources
 Management
@@ -1527,7 +1553,7 @@ Framework (CZIPEF) changes the precipitation threshold in 157 of the 217
 catchments with a paired threshold (72\%) - higher under CZIPEF in 83
 and lower in 74 - while 60 catchments have an identical threshold. The
 median difference is zero and the two thresholds agree only weakly
-(slope 0.31, R2 = 0.14), so the framework effect is catchment-specific
+(slope 0.31, R$^2$ = 0.14), so the framework effect is catchment-specific
 rather than a uniform shift. The temperature threshold is identifiable
 in fewer than 7\% of catchments, and the supplementary indicators give
 identifiable precipitation thresholds in only 10-26\% of catchments, so
@@ -1549,8 +1575,9 @@ transition is represented without generating physically implausible
 combinations.
 
 Sobol and PRCC results show that sensitivity varies across Köppen-Geiger
-zones: beta, FC and LP control MAR everywhere, while SFCF, TT and CFMAX
-become important in the snow-dominated classes and MAXBAS affects MAMF
+zones: beta, FC and LP control MAR everywhere, while SFCF, TT and, in
+the continental D classes, CFMAX join them where snow processes matter,
+and MAXBAS affects MAMF
 in Cfa (Table 9). These findings have significance for broader
 hydrological modeling methodologies and water resource management
 methods, laying foundations for converting intricate non-stationary
@@ -1596,7 +1623,7 @@ Figures generated by \texttt{01-analysis/R/10\_figures.R} from the Revision 1 pr
 \begin{figure}[p]
 \centering
 \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{03-writeup/Revision-1/latex-v2/si/F3_parameter_drift.png}
-\caption*{Figure S3 Parameter drift from 10-year moving-window recalibration, averaged by K\"oppen-Geiger class (mean $\\pm$ one standard error).}
+\caption*{Figure S3 Parameter drift from 10-year moving-window recalibration, averaged by K\"oppen-Geiger class (mean $\pm$ one standard error).}
 \end{figure}
 \begin{figure}[p]
 \centering
