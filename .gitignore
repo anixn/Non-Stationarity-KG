@@ -1,0 +1,29 @@
+# Windows shell metadata
+desktop.ini
+Thumbs.db
+
+# R session artefacts
+.Rhistory
+.Rapp.history
+.Ruserdata/
+.Rproj.user/
+.Renviron
+*.Rcheck/
+
+# LaTeX intermediates anywhere in the writeup tree (compiled PDFs are kept)
+03-writeup/Revision-1/latex/**/*.aux
+03-writeup/Revision-1/latex/**/*.log
+03-writeup/Revision-1/latex/**/*.out
+03-writeup/Revision-1/latex/**/*.toc
+03-writeup/Revision-1/latex/**/*.fls
+03-writeup/Revision-1/latex/**/*.fdb_latexmk
+03-writeup/Revision-1/latex/**/*.synctex.gz
+03-writeup/Revision-1/latex/**/*.bbl
+03-writeup/Revision-1/latex/**/*.blg
+03-writeup/Revision-1/latex/**/*.xdv
+
+# Office temp files
+~$*
+
+# macOS
+.DS_Store
