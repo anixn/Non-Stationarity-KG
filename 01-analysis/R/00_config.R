@@ -202,9 +202,12 @@ SOBOL_N  <- env_int("TSFT_SOBOL_N", SOBOL_N)
 SENS_CLASSES <- c("BSk", "Cfa", "Cfb", "Dfa", "Dfb", "Dfc")
 
 # ---- Plotting ---------------------------------------------------------------
-FIG_DPI <- 300
-FIG_WIDTH <- 7
-FIG_HEIGHT <- 5
+# Figure standard: Roboto 10 pt, colourblind-safe palettes, vector PDF +
+# 300 dpi PNG. Figures are designed at the manuscript text width (A4 with
+# 2.5 cm margins = 160 mm) so printed text is exactly 10 pt.
+FIG_DPI     <- 300
+FIG_W_MM    <- 160    # design width of every figure (mm)
+FIG_H_MM    <- 100    # default height, overridden per figure in 10_figures.R
 
 # ---- Small helpers ----------------------------------------------------------
 `%||%` <- function(a, b) if (is.null(a) || length(a) == 0L || is.na(a[1])) b else a

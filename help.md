@@ -1,4 +1,4 @@
-[CONCEPT](./concept.md) | [README](./readme.md) | [TODO](./todo.md) | [UPDATE](./updates.md) | [HELP](./help.md) | [PROGRESS](./progress.md)
+[CONCEPT](./concept.md) | [README](./readme.md) | [TODO](./todo.md) | [UPDATE](./updates.md) | [HELP](./help.md) | [STATUS](./PROJECT_STATUS.md)
 
 # Writing-Session Help — CZIPEF Revision 1
 

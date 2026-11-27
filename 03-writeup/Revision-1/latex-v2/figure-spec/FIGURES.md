@@ -61,17 +61,21 @@ unchanged.
   `#eaf5ea,stroke:#2e6b2e`; decision/hypothesis amber `#fdf1e0,stroke:#a6611a`.
   Text is ≥ 16 px in the SVG so that, scaled to \linewidth (~3.3 in) the
   smallest type is ≥ 10 pt equivalent.
-- **Data figures (ggplot2):** `theme_academic()` with Roboto, absolute
-  element sizes from `TYPOGRAPHY_SPEC.md`; vector PDF for the manuscript +
-  300-dpi PNG for review; one panel per panel-a element; Okabe–Ito palette.
+- **Data figures (ggplot2):** `theme_publication()` in `01-analysis/R/10_figures.R`
+  with Roboto 10 pt, absolute element sizes, Okabe–Ito/Tol palettes, bold
+  a.) panel labels where panels carry distinct content; vector PDF for the
+  manuscript + 300-dpi PNG for review; designed at 160 mm so `\linewidth`
+  includes render at scale 1.0 (see `TYPOGRAPHY_SPEC.md`).
 - Captions in the docx already carry "Figure N …"; the LaTeX build strips
-  the leading number.
+  the leading number. Captions synced to the 2026-11-27 figure rebuild:
+  Fig. 9 now says "(a) SPF and (b) CZIPEF"; Fig. 12 colour wording is
+  red higher / blue lower / grey identical.
 
 ## Reproduction
 
 ```r
 # data figures
-Rscript 02-outputs/revision/figures/10_figures.R   # (existing pipeline)
+Rscript 01-analysis/R/run_all.R        # with TSFT_STAGES=10 to redraw figures only
 ```
 
 The five conceptual figures have already been rendered from the `.mmd`

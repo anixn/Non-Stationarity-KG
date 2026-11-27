@@ -675,6 +675,6 @@ Rscript 01-analysis/R/run_all.R
 Rscript 01-analysis/R/run_all.R
 ```
 
-LaTeX build: `03-writeup/Revision-1/latex/` (`build_all.ps1` →
-`build/manuscript.pdf`, 57 pages; scales figures to the line width, appends
-SI figures/tables).
+LaTeX build: `03-writeup/Revision-1/latex-v2/` (pdflatex + bibtex on
+`manuscript.tex` → `manuscript.pdf`, 50 pages; build commands in
+`latex-v2/README.md`; the old pandoc `latex/` build was removed on 27 Nov 2026).

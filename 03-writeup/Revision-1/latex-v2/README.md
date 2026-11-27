@@ -34,7 +34,7 @@ manual, Wilby & Dessai chapter).
 | `media/`, `si/`, `tables/` | copies of the R1 assets (figures, SI figures, booktabs tables) |
 | `figure-spec/` | FIGURES.md + TYPOGRAPHY_SPEC.md + five `.mmd` flowchart sources (CIMP6 house style) |
 
-## What changed vs `../latex/manuscript.tex` (pandoc build)
+## What changed vs the earlier pandoc build (`../latex/manuscript.tex`, removed 27 Nov 2026)
 
 - **Citations:** all 96 Zotero author–year text citations converted to
   `\citep`/`\citet` (105 + 9); the plain-text References list is replaced by

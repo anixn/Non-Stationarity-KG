@@ -1,4 +1,4 @@
- [CONCEPT](./concept.md) | [README](./readme.md) | [TODO](./todo.md) | [UPDATE](./updates.md) | [HELP](./help.md) | [PROGRESS](./progress.md)
+ [CONCEPT](./concept.md) | [README](./readme.md) | [TODO](./todo.md) | [UPDATE](./updates.md) | [HELP](./help.md) | [STATUS](./PROJECT_STATUS.md)
 
 # Research Concept — CZIPEF
 
@@ -51,7 +51,7 @@ Bottom-up exploratory framework: 121-cell scenario grid (ΔP ×0.5–1.5 × ΔT 
 
 ## Status
 
-Concept fully implemented; manuscript complete (see `progress.md`). The headline empirical result: the MAR precipitation threshold changes in 72% of catchments (83 higher / 74 lower / 60 equal of 217), median difference zero, R² = 0.14 — catchment-specific, climatically patterned, not a uniform shift.
+Concept fully implemented; manuscript complete (see `PROJECT_STATUS.md`). The headline empirical result: the MAR precipitation threshold changes in 72% of catchments (83 higher / 74 lower / 60 equal of 217), median difference zero, R² = 0.14 — catchment-specific, climatically patterned, not a uniform shift.
 
 ## Timeline
 

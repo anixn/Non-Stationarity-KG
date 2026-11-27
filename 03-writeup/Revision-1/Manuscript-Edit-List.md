@@ -8,10 +8,10 @@
 > Status: **A applied** (19 Nov 2026) · **B applied** (20 Nov 2026) ·
 > **C applied** (20 Nov 2026) · **D checked**
 >
-> LaTeX build: `03-writeup/Revision-1/latex/build_all.ps1` converts the docx
-> with pandoc, injects the preamble, scales figures to the line width, generates
-> booktabs tables from the pipeline CSVs, appends the supplementary figures and
-> compiles `build/manuscript.pdf` (57 pages).
+> LaTeX build: `03-writeup/Revision-1/latex-v2/manuscript.tex` (pdflatex +
+> bibtex; see `latex-v2/README.md`). Note: the 20 Nov 2026 pandoc build
+> (`latex/build_all.ps1`, 57 pp) described below was superseded and removed
+> on 27 Nov 2026 — `latex-v2` is the current build (50 pp).
 
 ---
 
