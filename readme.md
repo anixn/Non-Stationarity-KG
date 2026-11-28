@@ -8,11 +8,12 @@ in the project is executable. Superseded code and outputs were removed on
 stale run logs), so the tree below is the complete working set.
 
 The project follows the toolkit standards archived in
-[`00_project-info/standards/`](00_project-info/standards/) (file/folder
-management, scientific figure standard, project-status template); how they
-map onto this tree is recorded in
+[`00_project-info/standards/`](00_project-info/standards/) (working file,
+file/folder management, scientific figure standard, figure-spec template, run
+summary, project-status template); how they map onto this tree is recorded in
 [`00_project-info/project_structure.md`](00_project-info/project_structure.md).
-Session-level status: [`PROJECT_STATUS.md`](PROJECT_STATUS.md).
+Session-level status: [`PROJECT_STATUS.md`](PROJECT_STATUS.md); figure
+register: [`FIGURES.md`](FIGURES.md).
 
 ```
 ├───📁 00_project-info        ← standards archive + structure map
@@ -28,29 +29,32 @@ Session-level status: [`PROJECT_STATUS.md`](PROJECT_STATUS.md).
 │
 ├───📁 03-writeup
 │   ├───📁 Revision-1         ← manuscript (docx), tables, SI, responses, LaTeX build
-│   │   └───📁 latex-v2       ← ★ current build: real BibTeX, prior-art update,
-│   │                             figure-spec set, synced captions (manuscript.pdf, 50 pp)
+│   │   ├───📁 latex-v2       ← ★ current build: real BibTeX, prior-art update,
+│   │   │   │                     synced captions (manuscript.pdf, 50 pp)
+│   │   │   └───📁 figure-spec ← conceptual .mmd/.svg sources + TYPOGRAPHY_SPEC
+│   │   └───📝 KG_Bibliography.bib
 │   ├───📁 prior-art          ← WOS search corpus + literature-gap notes
-│   ├───📁 references         ← KG_Bibliography.bib
 │   └───📝 …
 │
+├───📝 FIGURES.md             ← ★ figure register + eight-line card per main figure
 ├───📝 PROJECT_STATUS.md      ← standing status + session history (toolkit template)
 ├───📝 concept.md             ← research idea, filled and current
 ├───📝 readme.md              ← this file
 ├───📝 todo.md
 ├───📝 updates.md             ← dated work journal
 ├───📝 help.md                ← ★ writing-session help (keypoints, cheat-sheet, figure map)
-└───📝 PROJECT_STATUS.md      ← session history incl. per-workstream status (toolkit template)
+└───📝 RUN_SUMMARY.md         ← newest-first run log
 ```
 
 ## Where to start
 
 - **Project status (toolkit template):** [`PROJECT_STATUS.md`](PROJECT_STATUS.md)
+- **Figure register:** [`FIGURES.md`](FIGURES.md) — all main and supplementary
+  figures with script, data, size and status.
 - **Writing session:** [`help.md`](help.md) — simple-language summary, editor keypoints,
   number cheat-sheet, figure/table map, terminology rules.
 - Pipeline manual: [`01-analysis/R/README.md`](01-analysis/R/README.md)
 - Current LaTeX build: [`03-writeup/Revision-1/latex-v2/README.md`](03-writeup/Revision-1/latex-v2/README.md)
-  (figures: [`latex-v2/figure-spec/FIGURES.md`](03-writeup/Revision-1/latex-v2/figure-spec/FIGURES.md))
 - Manuscript edit log: [`03-writeup/Revision-1/Manuscript-Edit-List.md`](03-writeup/Revision-1/Manuscript-Edit-List.md)
 - Response notes: [`03-writeup/Revision-1/Response-to-Reviewers-Notes.md`](03-writeup/Revision-1/Response-to-Reviewers-Notes.md)
 - Indicator and KG-map decisions: [`03-writeup/Revision-1/Indicator-and-KG-Map-Decisions.md`](03-writeup/Revision-1/Indicator-and-KG-Map-Decisions.md)

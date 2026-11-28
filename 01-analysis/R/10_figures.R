@@ -2,12 +2,15 @@
 # 10_figures.R
 # Publication figures for the revision.
 #
-# Style follows the project figure standard (scientific_figure_standard.md):
-#   - Roboto throughout, base 10 pt (Arial fallback if Roboto is absent).
-#   - Panel labels "a.)", "b.)", bold, upper-left of each panel, for figures
-#     whose panels carry distinct content. Homogeneous facet grids (all panels
-#     are the same plot type identified by the strip text) keep strip labels
-#     only, so the labels do not duplicate information.
+# Style follows the project figure standard v2 (scientific_figure_standard.md,
+# 2026-11-28): the element size table, not "10 pt everywhere".
+#   - Roboto throughout (Arial fallback if Roboto is absent).
+#   - Axis titles 10 pt; tick labels, legends, strip labels and colorbar
+#     9 pt; panel labels "a.)", "b.)" 11 pt bold; in-plot annotations 9 pt;
+#     inset text 8 pt. Three main sizes only (11 / 10 / 9), never below 7 pt.
+#   - Panel labels are drawn for figures whose panels carry distinct content.
+#     Homogeneous facet grids (all panels are the same plot type identified by
+#     the strip text) keep strip labels only, so labels do not duplicate.
 #   - Colourblind-safe palettes with fixed variable-to-colour mappings:
 #     Okabe-Ito/Tol for categories, viridis for continuous variables, the
 #     official Beck et al. (2023) palette for the KG maps, and a colourblind-
@@ -15,8 +18,8 @@
 #   - Units in parentheses on every axis; "-" marks dimensionless quantities.
 #   - Designed at final printed size: the manuscript is A4 with 2.5 cm
 #     margins, so the text width is 160 mm and every figure is designed at
-#     exactly 160 mm wide (heights vary with content). Text stays 10 pt in
-#     print because the LaTeX build scales to \linewidth without shrinking.
+#     exactly 160 mm wide (heights vary with content). The LaTeX build scales
+#     to \linewidth without shrinking, so the sizes above are the printed sizes.
 #   - Export: vector PDF (cairo_pdf) + 300 dpi PNG, white background.
 #
 # Outputs (02-outputs/revision/figures/): PDF + PNG per figure.
@@ -64,33 +67,35 @@ ensure_fig_font <- function() {
 ensure_fig_font()
 
 # ---- Figure standard: theme --------------------------------------------------
-# Centralised publication theme. Everything is 10 pt Roboto, no bold titles,
-# white background, subtle horizontal major gridlines only, classic axis line.
+# Centralised publication theme implementing the v2 element size table:
+# axis titles 10 pt, ticks/legends/strips/colorbar 9 pt, panel tags 11 pt bold,
+# in-plot annotations 9 pt. White background, subtle horizontal major gridlines
+# only, classic axis line.
 theme_publication <- function(base_size = 10) {
   ggplot2::theme_classic(base_size = base_size, base_family = FIG_FONT) +
     ggplot2::theme(
       text              = ggplot2::element_text(family = FIG_FONT,
-                                                size = 10, colour = "black"),
+                                                size = 9, colour = "black"),
       plot.title        = ggplot2::element_text(size = 10, hjust = 0,
                                                 margin = ggplot2::margin(b = 3)),
-      plot.subtitle     = ggplot2::element_text(size = 10, hjust = 0,
+      plot.subtitle     = ggplot2::element_text(size = 9, hjust = 0,
                                                 colour = "grey30",
                                                 margin = ggplot2::margin(b = 2)),
       axis.title        = ggplot2::element_text(size = 10, colour = "black"),
-      axis.text         = ggplot2::element_text(size = 10, colour = "black"),
+      axis.text         = ggplot2::element_text(size = 9, colour = "black"),
       axis.ticks        = ggplot2::element_line(linewidth = 0.45,
                                                 colour = "black"),
       axis.ticks.length = ggplot2::unit(1.6, "mm"),
       panel.grid.major.y = ggplot2::element_line(linewidth = 0.3,
                                                  colour = "grey88"),
       panel.grid.major.x = ggplot2::element_blank(),
-      legend.title      = ggplot2::element_text(size = 10),
-      legend.text       = ggplot2::element_text(size = 10),
+      legend.title      = ggplot2::element_text(size = 9),
+      legend.text       = ggplot2::element_text(size = 9),
       legend.key.size   = ggplot2::unit(3.5, "mm"),
       legend.background = ggplot2::element_blank(),
       strip.background  = ggplot2::element_blank(),
-      strip.text        = ggplot2::element_text(size = 10),
-      plot.tag          = ggplot2::element_text(size = 10, face = "bold"),
+      strip.text        = ggplot2::element_text(size = 9),
+      plot.tag          = ggplot2::element_text(size = 11, face = "bold"),
       plot.margin       = ggplot2::margin(4, 6, 4, 4)
     )
 }
@@ -131,7 +136,7 @@ panel_labels <- function(p, data, facet, labels = NULL) {
   p + ggplot2::geom_text(data = lab,
                          ggplot2::aes(x = .x, y = .y, label = label),
                          inherit.aes = FALSE, hjust = 0.05, vjust = 1.4,
-                         size = 10 / ggplot2::.pt, fontface = "bold",
+                         size = 11 / ggplot2::.pt, fontface = "bold",
                          family = FIG_FONT)
 }
 

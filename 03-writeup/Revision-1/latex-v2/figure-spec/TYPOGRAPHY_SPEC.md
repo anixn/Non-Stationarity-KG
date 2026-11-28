@@ -1,21 +1,31 @@
-# TYPOGRAPHY_SPEC.md — fonts and spacing for the CZIPEF data figures
+# TYPOGRAPHY_SPEC.md — fonts, sizes and geometry for the CZIPEF data figures
 
-> **Superseded on 2026-11-27.** This spec previously followed the CIMP6 India
-> house style (13 pt titles, bold 12 pt axis titles, base 12). It is now
-> aligned with the project figure standard
-> (`00_project-info/standards/scientific_figure_standard.md`). The style is
-> implemented once, centrally, in `theme_publication()` inside
+> **Status:** current from 2026-11-28. Implements the v2 element table in
+> `00_project-info/standards/scientific_figure_standard.md`. It replaces the
+> earlier CIMP6 house style (13 pt titles, 12 pt base) and the short-lived
+> 2026-11-27 "10 pt everywhere" scheme.
+>
+> The style is implemented once, centrally, in `theme_publication()` inside
 > `01-analysis/R/10_figures.R`; figures are regenerated with
-> `Rscript 01-analysis/R/run_all.R` and `TSFT_STAGES=10`.
+> `TSFT_STAGES=10 Rscript 01-analysis/R/run_all.R`. The project register is
+> `FIGURES.md` at the repository root.
 
-## Current rules (per the project figure standard)
+## Current rules (per the project figure standard, v2)
 
 | Property | Value |
 |---|---|
 | Font family | **Roboto**, static Regular + Bold, registered through sysfonts/showtext (Arial fallback if Roboto is absent) |
-| Text size | **10 pt everywhere** — titles, axis titles, tick labels, legends, strips, panel labels, annotations |
-| Titles | plain (never bold), left-aligned |
-| Panel labels | bold lowercase **a.)**, **b.)**, **c.)** at the upper-left of each panel; applied when panels carry distinct content, omitted on homogeneous facet grids whose strips already identify the panels |
+| Axis titles | **10 pt**, regular |
+| Axis tick labels | **9 pt**, regular |
+| Figure legends (title and text) | **9 pt**, regular; title may be medium, not bold |
+| Strip labels (facets) | **9 pt**, regular |
+| Colorbar title and ticks | **9 pt**, regular |
+| Panel labels | **11 pt bold**, house format **a.)**, **b.)**, **c.)**, upper-left inside each panel; used when panels carry distinct content |
+| In-plot annotations | **9 pt**, regular |
+| Inset text | **8 pt**, regular (only when the inset is small) |
+| Minimum | no text below **7 pt** |
+| Hierarchy | at most three main sizes — **11** (panel labels) / **10** (axis titles and titles) / **9** (everything secondary); insets may use 8 |
+| Titles | plain (never bold), left-aligned, 10 pt |
 | Palette | Okabe-Ito/Tol for categories (fixed variable-to-colour mapping across figures), viridis for continuous variables, the official Beck et al. (2023) palette for KG maps, red-blue diverging (#D7191C / grey / #2C7BB6) for signed differences |
 | Axis titles | units in parentheses, e.g. `Longitude (°)`, `Temperature change (°C)`, `Precipitation multiplier (–)`; `(–)` marks dimensionless |
 | Grid | subtle horizontal major gridlines only (0.3 pt, grey 88); no minor grid |
@@ -27,8 +37,9 @@
 | Constraint | Value |
 |---|---|
 | Page | A4 with 2.5 cm margins → text width **160 mm** |
-| Design width | every figure is designed at exactly **160 mm** wide, so the LaTeX `width=\linewidth,keepaspectratio` include renders at scale 1.0 and text prints at exactly 10 pt |
+| Design width | every data figure is designed at exactly **160 mm** wide, so the LaTeX `width=\linewidth,keepaspectratio` include renders at scale 1.0 and text prints at the sizes above |
 | Heights | 65–150 mm, set per figure in `10_figures.R` |
+| Conceptual diagrams | 160 mm wide; Figs. 3 and 7 are two-panel layouts (160 × 98 mm and 160 × 134 mm); the remaining conceptual diagrams are 160 mm wide with heights set by their aspect |
 
 ## Fixed colour mappings (do not change between figures)
 
@@ -48,9 +59,11 @@
 
 ## Pass/fail check
 
-```
-Smallest figure text = 10 pt (all elements)
-Requirement          = 10 pt minimum
+```text
+Axis titles               = 10 pt   requirement 9–10 pt   PASS
+Tick labels / legends     =  9 pt   requirement 8–9 pt    PASS
+Panel labels              = 11 pt bold, a.) format        PASS
+Smallest text in any data figure = 9 pt (no insets used)  PASS (floor 7 pt)
 Design width = 160 mm = \linewidth at 2.5 cm A4 margins → scale 1.0
 => PASS for all 19 data figures at final saved size.
 ```

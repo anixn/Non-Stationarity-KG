@@ -1,4 +1,4 @@
-﻿% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \documentclass[
@@ -519,7 +519,7 @@ E (Polar) & T (Tundra) & ~ & ET \\
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/media/media/image1.png}
+\includegraphics[width=\linewidth,keepaspectratio]{02-outputs/revision/figures/FA_analysed_catchments.pdf}
 \caption{Analysed catchments. Green circles mark the 222 catchments
 that passed the calibration and climate-zone requirements and grey
 circles the candidate-only catchments; the size of each dot indicates
@@ -542,7 +542,7 @@ catchments (Section 4.1).
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/media/media/image2.png}
+\includegraphics[width=\linewidth,keepaspectratio]{02-outputs/revision/figures/FB_selection_map.pdf}
 \caption{Candidate catchments and the analysed sample. Blue circles
 mark the 110 candidate-only catchments and red crosses the 222 analysed
 catchments; both are drawn from the 332 candidates selected as one
@@ -614,12 +614,13 @@ hydrological systems under diverse climatic scenarios.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/figures/fig3_framework.png}
-\caption{Bottom-up framework with an exploratory climate change
-approach workflow to assess catchment vulnerability. In the
-implementation used here, the vulnerability class mapping is estimated
-with isotonic and logistic prevalence models and cross-checked with CART
-(Fig. 6).}
+\includegraphics[width=\linewidth,keepaspectratio]{02-outputs/revision/figures/fig3_framework.pdf}
+\caption{Bottom-up framework for catchment vulnerability. (a) Perturbed
+climate scenarios and behavioural parameter sets drive HBV and produce
+streamflow; (b) streamflow-based indicator classes train the supervised
+classifier that maps the scenario grid to vulnerability classes. The
+class mapping is estimated with isotonic and logistic prevalence models
+and cross-checked with CART (Fig. 6).}
 \end{figure}
 
 In order to validate the hydrological model within the catchment
@@ -646,7 +647,7 @@ required for large-scale catchment vulnerability assessments.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/figures/fig4_hbv.png}
+\includegraphics[width=\linewidth,keepaspectratio]{02-outputs/revision/figures/fig4_hbv.pdf}
 \caption{Conceptual structure of the HBV model used in the study,
 with the governing equations of each module.}
 \end{figure}
@@ -746,7 +747,7 @@ model is calibrated, and behavioral parameter sets are identified.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/figures/fig5_calibration.png}
+\includegraphics[width=\linewidth,keepaspectratio]{02-outputs/revision/figures/fig5_calibration.pdf}
 \caption{Monte-Carlo calibration methodology adopted for the
 hydrological model.}
 \end{figure}
@@ -993,7 +994,7 @@ precipitation and temperature see \citep{deshmukh2016physio}.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/figures/fig6_cart_crosscheck.png}
+\includegraphics[width=\linewidth,keepaspectratio]{02-outputs/revision/figures/fig6_cart_crosscheck.pdf}
 \caption{Threshold estimation and cross-check workflow. The
 cell-wise indicator classes from the 121 scenario cells are mapped to
 thresholds with isotonic regression and a logistic model, and
@@ -1060,7 +1061,7 @@ Figure 7.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/figures/fig7_kg_parameter.png}
+\includegraphics[width=\linewidth,keepaspectratio]{02-outputs/revision/figures/fig7_kg_parameter.pdf}
 \caption{Incorporation of the Köppen-Geiger climate classification
 into the exploratory modelling framework. Behavioural parameter sets are
 mapped to climate-zone pools with a Gaussian copula fitted per zone; for
@@ -1156,7 +1157,7 @@ behavioural parameter sets under KGE ≥ 0.5 and \textbar PBIAS\textbar{}
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/media/media/image8.png}
+\includegraphics[width=\linewidth,keepaspectratio]{02-outputs/revision/figures/F4b_kg_delta_change_map.pdf}
 \caption{Köppen-Geiger classes of the analysed catchments under
 delta changes in precipitation of -50\%, 0 and +50\% (rows) and warming
 of +1.5, +2, +3 and +4 °C (columns), assigned with the \citet{beck2023high} scheme applied to perturbed monthly climate normals. Each point
@@ -1182,7 +1183,7 @@ temperature threshold is 3.9 °C.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/media/media/image9.png}
+\includegraphics[width=\linewidth,keepaspectratio]{02-outputs/revision/figures/F14_prevalence_surface.pdf}
 \caption{Probability that MAR is in the most vulnerable class
 for catchment 06614800 under (a) SPF and (b) CZIPEF. Each cell is
 one of the 121 precipitation-temperature combinations, and the white
@@ -1192,7 +1193,7 @@ the temperature-averaged probability curve crosses 0.5.}
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/media/media/image10.png}
+\includegraphics[width=\linewidth,keepaspectratio]{02-outputs/revision/figures/F8b_threshold_map.pdf}
 \caption{Precipitation thresholds for MAR under (a) the
 stationary parameter framework (SPF) and (b) the climate zone-informed
 parameter evolution framework (CZIPEF). Colour gives the threshold, that
@@ -1243,7 +1244,7 @@ one catchment and lower it in a neighbouring one.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/media/media/image11.png}
+\includegraphics[width=\linewidth,keepaspectratio]{02-outputs/revision/figures/F8_threshold_scatter.pdf}
 \caption{SPF against CZIPEF precipitation thresholds by indicator:
 MAR (primary), LFI and MAMF (supplementary). Grey circles are
 catchments, the red dashed line is the 1:1 line and the blue line is the
@@ -1272,7 +1273,7 @@ rather than a stronger framework effect.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/media/media/image12.png}
+\includegraphics[width=\linewidth,keepaspectratio]{02-outputs/revision/figures/F9_threshold_difference_map.pdf}
 \caption{Direction of the SPF-CZIPEF difference in the precipitation
 threshold by indicator: MAR (primary), LFI and MAMF (supplementary). Red
 circles mark catchments where the CZIPEF threshold is higher, blue
@@ -1303,7 +1304,7 @@ are step-like and are shown for completeness rather than interpreted.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/media/media/image13.png}
+\includegraphics[width=\linewidth,keepaspectratio]{02-outputs/revision/figures/F13_parameter_cdf.pdf}
 \caption{Cumulative distribution functions of the pooled
 behavioural parameter sets by Köppen-Geiger class. Each panel is one HBV
 parameter and each line is one class; classes with a single contributing
@@ -1347,7 +1348,7 @@ not a property of the model.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth,keepaspectratio]{03-writeup/Revision-1/latex-v2/media/media/image14.png}
+\includegraphics[width=\linewidth,keepaspectratio]{02-outputs/revision/figures/F10_sensitivity.pdf}
 \caption{PRCC and Sobol sensitivity of the HBV parameters for
 MAR in six catchments representing the six dominant classes (BSk, Cfa,
 Cfb, Dfa, Dfb and Dfc).}
@@ -1612,52 +1613,52 @@ environmental contexts.
 Figures generated by \texttt{01-analysis/R/10\_figures.R} from the Revision 1 production run.
 \begin{figure}[p]
 \centering
-\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{03-writeup/Revision-1/latex-v2/si/F1_calibration_performance.png}
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{02-outputs/revision/figures/F1_calibration_performance.pdf}
 \caption*{Figure S1 Distribution of the median KGE and NSE of the retained behavioural sets across the 332 candidate catchments. The dashed line marks KGE = 0.5.}
 \end{figure}
 \begin{figure}[p]
 \centering
-\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{03-writeup/Revision-1/latex-v2/si/F2_split_sample.png}
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{02-outputs/revision/figures/F2_split_sample.pdf}
 \caption*{Figure S2 Differential split-sample validation. Median KGE in the calibration period against the validation period for the forward and reverse directions; the dashed line is the 1:1 line and the dotted line is KGE = 0.5.}
 \end{figure}
 \begin{figure}[p]
 \centering
-\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{03-writeup/Revision-1/latex-v2/si/F3_parameter_drift.png}
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{02-outputs/revision/figures/F3_parameter_drift.pdf}
 \caption*{Figure S3 Parameter drift from 10-year moving-window recalibration, averaged by K\"oppen-Geiger class (mean $\pm$ one standard error).}
 \end{figure}
 \begin{figure}[p]
 \centering
-\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{03-writeup/Revision-1/latex-v2/si/F4_kg_baseline_map.png}
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{02-outputs/revision/figures/F4_kg_baseline_map.pdf}
 \caption*{Figure S4 Baseline K\"oppen-Geiger class of the analysed catchments (1981-2010), assigned with the \citet{beck2023high} scheme.}
 \end{figure}
 \begin{figure}[p]
 \centering
-\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{03-writeup/Revision-1/latex-v2/si/F5_kg_transition_map.png}
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{02-outputs/revision/figures/F5_kg_transition_map.pdf}
 \caption*{Figure S5 Fraction of the 121 synthetic scenarios in which a catchment leaves its baseline K\"oppen-Geiger class.}
 \end{figure}
 \begin{figure}[p]
 \centering
-\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{03-writeup/Revision-1/latex-v2/si/F6_variance_partition.png}
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{02-outputs/revision/figures/F6_variance_partition.pdf}
 \caption*{Figure S6 Variance partitioning of the behavioural parameter values into climate, physiography, shared and unexplained fractions.}
 \end{figure}
 \begin{figure}[p]
 \centering
-\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{03-writeup/Revision-1/latex-v2/si/F7_rf_importance.png}
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{02-outputs/revision/figures/F7_rf_importance.pdf}
 \caption*{Figure S7 Random-forest importance of the climate and physiographic attributes for each parameter.}
 \end{figure}
 \begin{figure}[p]
 \centering
-\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{03-writeup/Revision-1/latex-v2/si/F10b_sensitivity_LFI_MAMF.png}
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{02-outputs/revision/figures/F10b_sensitivity_LFI_MAMF.pdf}
 \caption*{Figure S8 PRCC and Sobol sensitivity of the HBV parameters for LFI and MAMF in the six representative catchments.}
 \end{figure}
 \begin{figure}[p]
 \centering
-\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{03-writeup/Revision-1/latex-v2/si/F11_uncertainty.png}
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{02-outputs/revision/figures/F11_uncertainty.pdf}
 \caption*{Figure S9 Parametric uncertainty of the three indicators arising from the 200 retained behavioural sets.}
 \end{figure}
 \begin{figure}[p]
 \centering
-\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{03-writeup/Revision-1/latex-v2/si/F12_threshold_identifiability.png}
+\includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{02-outputs/revision/figures/F12_threshold_identifiability.pdf}
 \caption*{Figure S10 Share of catchments with an identifiable precipitation and temperature threshold for each indicator and framework.}
 \end{figure}
 \clearpage

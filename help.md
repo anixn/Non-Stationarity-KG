@@ -89,21 +89,21 @@
 
 | Fig | Content | File | Caption status |
 |---|---|---|---|
-| 1 | Analysed catchments (green) vs candidate-only (grey); dot size = area | `media/media/image1.png` | synced 24 Nov 2026 |
-| 2 | Red cross = 222 analysed, blue circle = 110 candidate-only | `media/media/image2.png` | synced |
-| 3 | Bottom-up framework workflow | `figures/fig3_framework.png` (mmd) | synced |
-| 4 | HBV structure + governing equations (incl. fixed CFR, CWH, SP) | `figures/fig4_hbv.png` (mmd) | synced |
-| 5 | Monte-Carlo calibration loop | `figures/fig5_calibration.png` (mmd) | synced |
-| 6 | Threshold estimation + CART cross-check workflow (NOT a tree plot) | `figures/fig6_cart_crosscheck.png` (mmd) | synced |
-| 7 | KG-zone-conditioned parameter evolution (centrepiece) | `figures/fig7_kg_parameter.png` (mmd) | synced |
-| 8 | Delta-change KG map, 3 ΔP rows × 4 ΔT columns | `media/media/image8.png` | synced |
-| 9 | P(class 3) surface, catchment 06614800, SPF vs CZIPEF | `media/media/image9.png` | synced |
-| 10 | Precipitation threshold maps, SPF vs CZIPEF (MAR) | `media/media/image10.png` | synced |
-| 11 | Threshold scatter, **3 panels** (MAR/LFI/MAMF) | `media/media/image11.png` | synced |
-| 12 | Direction of difference, **3 panels** (MAR/LFI/MAMF) | `media/media/image12.png` | synced |
-| 13 | Parameter CDFs by KG class (12 classes; 4 step-like) | `media/media/image13.png` | synced |
-| 14 | PRCC + Sobol for MAR, six representative catchments | `media/media/image14.png` | synced |
-| S1–S10 | calibration, split-sample, drift, KG maps, variance partition, RF, LFI/MAMF sensitivity, uncertainty, identifiability | `si/F*.png` | synced |
+| 1 | Analysed catchments (green) vs candidate-only (grey); dot size = area | `02-outputs/revision/figures/FA_analysed_catchments.pdf` | v002 28 Nov 2026 |
+| 2 | Red cross = 222 analysed, blue circle = 110 candidate-only | `02-outputs/revision/figures/FB_selection_map.pdf` | v002 |
+| 3 | Bottom-up framework workflow | `02-outputs/revision/figures/fig3_framework.pdf` (mmd) | v001 |
+| 4 | HBV structure + governing equations (incl. fixed CFR, CWH, SP) | `02-outputs/revision/figures/fig4_hbv.pdf` (mmd) | v001 |
+| 5 | Monte-Carlo calibration loop | `02-outputs/revision/figures/fig5_calibration.pdf` (mmd) | v001 |
+| 6 | Threshold estimation + CART cross-check workflow (NOT a tree plot) | `02-outputs/revision/figures/fig6_cart_crosscheck.pdf` (mmd) | v001 |
+| 7 | KG-zone-conditioned parameter evolution (centrepiece), two panels | `02-outputs/revision/figures/fig7_kg_parameter.pdf` (mmd) | v002 28 Nov 2026 |
+| 8 | Delta-change KG map, 3 ΔP rows × 4 ΔT columns | `02-outputs/revision/figures/F4b_kg_delta_change_map.pdf` | v002 |
+| 9 | P(class 3) surface, catchment 06614800, SPF vs CZIPEF | `02-outputs/revision/figures/F14_prevalence_surface.pdf` | v002 |
+| 10 | Precipitation threshold maps, SPF vs CZIPEF (MAR) | `02-outputs/revision/figures/F8b_threshold_map.pdf` | v002 |
+| 11 | Threshold scatter, **3 panels** (MAR/LFI/MAMF) | `02-outputs/revision/figures/F8_threshold_scatter.pdf` | v002 |
+| 12 | Direction of difference, **3 panels** (MAR/LFI/MAMF) | `02-outputs/revision/figures/F9_threshold_difference_map.pdf` | v002 |
+| 13 | Parameter CDFs by KG class (12 classes; 4 step-like) | `02-outputs/revision/figures/F13_parameter_cdf.pdf` | v002 |
+| 14 | PRCC + Sobol for MAR, six representative catchments | `02-outputs/revision/figures/F10_sensitivity.pdf` | v002 |
+| S1–S10 | calibration, split-sample, drift, KG maps, variance partition, RF, LFI/MAMF sensitivity, uncertainty, identifiability | `02-outputs/revision/figures/F*.pdf` | v002 |
 
 | Table | Content |
 |---|---|
@@ -116,7 +116,7 @@
 | 8 | SPF–CZIPEF decomposition |
 | 9 | Significant parameters by class & indicator |
 
-House style for figures: `latex-v2/figure-spec/FIGURES.md` + `TYPOGRAPHY_SPEC.md` (Mermaid→pele→rsvg for conceptual, ggplot2 `theme_academic` for data).
+House style for figures: root `FIGURES.md` (register) + `latex-v2/figure-spec/TYPOGRAPHY_SPEC.md` (v2 sizes). Conceptual: Mermaid → pele → PDF/PNG; data: ggplot2 `theme_publication()`, designed at 160 mm.
 
 ---
 

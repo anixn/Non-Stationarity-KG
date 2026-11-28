@@ -4,10 +4,10 @@
 > the research question, progress, findings, problems and next steps,
 > readable without code or terminal logs.
 
-**Last updated:** 2026-11-27 17:20\
+**Last updated:** 2026-11-28 08:56\
 **Overall status:** Manuscript preparation (analysis complete)\
-**Current stage:** Revision-1 figures rebuilt to the project figure standard; manuscript re-built\
-**Last working session:** 20261127
+**Current stage:** figures rebuilt to standard v2, single figure folder, vector manuscript build\
+**Last working session:** 20261128
 
 ---
 
@@ -53,8 +53,8 @@ A full simple-language brief is in [`help.md`](help.md).
 | Data preparation | Completed | 1° selection list, forcing units corrected (PET conversion), documented in the pipeline README |
 | Analysis and modelling | Completed | Production run 19–20 Nov 2026; 222 of 332 catchments pass; stages 02–09 zero failures |
 | Validation and uncertainty | Completed | Split-sample both directions, moving-window drift, isotonic+logistic thresholds with CART cross-check, binomial bootstrap, PRCC/Sobol |
-| Figures and tables | Completed | Tables T3–T9 auto-generated; all 19 data figures rebuilt 2026-11-27 to the project figure standard |
-| Manuscript | In progress | latex-v2 rebuilt 2026-11-27 (50 pp, zero unresolved citations); remaining: journal-style bibliography, cover letter, optional PET robustness run |
+| Figures and tables | Completed | Tables T3–T9 auto-generated; all 19 data figures rebuilt 2026-11-28 to the v2 element-size table; all 14 main + 10 SI figures included as vector PDFs |
+| Manuscript | In progress | latex-v2 rebuilt 2026-11-28 (50 pp, zero unresolved citations, zero float warnings); remaining: journal-style bibliography, cover letter, optional PET robustness run |
 
 ## 4. Data and resources
 
@@ -122,6 +122,101 @@ tables in `02-outputs/revision/tables/` (see the cheat-sheet in `help.md`).
 
 ## 7. Latest working session
 
+**Date:** 20261128\
+**Session objective:** Adopt the new standards copied into
+`00_project-info/standards/`; rebuild all figures to the v2 element-size
+table; consolidate duplicate figure copies; rebuild the manuscript.\
+**Session outcome:** Completed
+
+### Work completed
+
+- Read the v2 standard, the folder standard, the working file and the figure
+  card template in `00_project-info/standards/`.
+- Moved `theme_publication()` from the 2026-11-27 "10 pt everywhere" scheme to
+  the v2 element table: axis titles 10 pt; ticks, legends, strip labels and
+  colorbars 9 pt; panel labels 11 pt bold; annotations 9 pt. Regenerated all
+  19 data figures (PDF + PNG).
+- Re-laid out the two tall conceptual diagrams as two-panel figures: Fig. 7
+  (a zone pooling; b scenario re-sampling) at 160 × 134 mm and Fig. 3
+  (a scenarios/model; b indicators/map) at 160 × 98 mm. The old portrait
+  versions were 420 mm and 340 mm tall, had to be shrunk below the 7 pt
+  floor, and overflowed their float once the caption was added.
+- Consolidated every publication figure in `02-outputs/revision/figures/`
+  (moved the five conceptual PDF/PNG pairs there from `latex-v2/figures/`)
+  and deleted the duplicate `latex-v2/media/media/` (14 PNGs) and
+  `latex-v2/si/` (10 PNGs) trees.
+- Repointed all 24 `\includegraphics` entries in `manuscript.tex` to the
+  publication folder and switched them from PNG to vector PDF.
+- Created the live figure register `FIGURES.md` at the repository root
+  (14 main + 10 supplementary rows, one eight-line card per main figure) and
+  removed the old register from `latex-v2/figure-spec/`.
+- Rewrote `TYPOGRAPHY_SPEC.md`, the `figure-spec/README.md`, the LaTeX build
+  README, `readme.md`, `help.md` and `00_project-info/project_structure.md`
+  to the new figure scheme and paths.
+- Rebuilt `manuscript.pdf` (50 pages, 7.1 MB, vector figures, zero float or
+  missing-file warnings).
+
+### Files created
+
+| File and location | Purpose |
+|---|---|
+| `FIGURES.md` | Live figure register and per-figure specification cards |
+| `RUN_SUMMARY.md` | Real run log (replaced the blank template) |
+
+### Files modified
+
+| File and location | What changed |
+|---|---|
+| `01-analysis/R/10_figures.R` | v2 theme sizes; 11 pt panel tags |
+| `02-outputs/revision/figures/*` | 19 data figures regenerated; conceptual figure outputs moved in; Fig. 7 re-rendered |
+| `03-writeup/Revision-1/latex-v2/manuscript.tex` | 24 includes repointed to vector PDFs; Figs. 3 and 7 two-panel layouts |
+| `03-writeup/Revision-1/latex-v2/figure-spec/*` | Fig. 7 source + SVG, README, TYPOGRAPHY_SPEC |
+| `03-writeup/Revision-1/latex-v2/README.md` | Build/asset description |
+| `readme.md`, `help.md`, `00_project-info/project_structure.md` | Figure paths, standards and structure map |
+| `PROJECT_STATUS.md` | This session entry and status tables |
+
+### Results and interpretation
+
+All main and supplementary figures now follow one size hierarchy and are
+embedded as vectors. No data, statistics, thresholds or captions changed.
+The only visual change beyond font sizes is Fig. 7's two-panel layout, which
+keeps the same mechanism and caption but makes it readable on one page.
+
+### Problems and errors
+
+- **Float too large (Figs. 3 and 7)** — the tall portrait diagrams exceeded
+  the text height once the caption was added. Fixed by re-laying out both as
+  two-panel figures.
+- **Below-floor text in the old Fig. 7** — fitting a 1:2.6 portrait diagram
+  to the page pushed the 14 px edge label to 6.3 pt. The two-panel layout
+  removes that case; the smallest label in both re-laid-out figures is now
+  about 8 pt.
+- Stage 10 still prints the known ggplot2 warnings for F1 (non-finite rows)
+  and F3 (missing ribbon rows); these predate this session and do not alter
+  the data.
+
+### Decisions made
+
+- **One figure folder:** `02-outputs/revision/figures/` is the only
+  publication location; the manuscript reads it directly.
+- **Vector includes:** all figures are included as PDF, not PNG.
+- **Conceptual panel markers:** Fig. 7's `a.)`/`b.)` are part of the stage
+  titles rather than free-standing 11 pt tags; the labels are legible at the
+  printed size and the alternative would require hand-placing text in the
+  SVG.
+- **Figs. 3 and 7 are two panels:** the split follows the argument
+  so it is fitted to the page height instead.
+
+### Verification performed
+
+- Inspected the rebuilt manuscript pages for Figs. 1, 3, 7, 8, 9, 10, 14 at
+  100 %; checked panel labels, captions, legend placement and clipping.
+- Confirmed `manuscript.log` has no "Float too large", "not found" or
+  undefined-reference warnings.
+- Confirmed all 24 include targets exist and all timestamps are 2026-11-28.
+
+### Previous session — 2026-11-27
+
 **Date:** 20261127\
 **Session objective:** Apply the toolkit standards (project status template,
 file/folder standard, scientific figure standard) to the project; rebuild all
@@ -167,8 +262,7 @@ figures to the figure standard.\
 |---|---|
 | `PROJECT_STATUS.md` | Standing project status (this file) |
 | `00_project-info/project_structure.md` | Structure memory: standard↔project mapping + conventions |
-| `00_project-info/standards/*.md` (3 files) | Archived toolkit standards |
-| `02-outputs/revision_figs_std.log` | Figure-stage run log for this session |
+| `00_project-info/standards/*.md` | Archived toolkit standards (3 files at the time; expanded to 7 on 2026-11-28) |
 
 ### Files modified
 
@@ -229,10 +323,10 @@ the colourblind-safe palette; the underlying results (83 higher / 74 lower /
 | Priority | Task | Why it is needed | Status / dependency |
 |---|---|---|---|
 | High | Switch bibliography to the target journal's style | Submission formatting | Pending; needs target journal choice |
-| High | Copy updated figures/captions into the R1 docx (`Deshmukh_2025_KG_R1.docx`) if the docx is still the submission vehicle | Keep both manuscript formats consistent | Pending |
+| High | Copy the new vector figures and synced captions into the R1 docx (`Deshmukh_2025_KG_R1.docx`) if the docx is still the submission vehicle | Keep both manuscript formats consistent | Pending; PNG exports are ready in `02-outputs/revision/figures/` |
 | Medium | Cover letter draft from `help.md` §2 | Submission requirement | Pending |
 | Medium | Optional Hamon-PET robustness run | Reviewer-flagged robustness check | Pending; separate full run (~1 day compute) |
-| Low | Re-render conceptual Figs 3–7 only if their `.mmd` sources change | House-style refresh | Not needed now |
+| Low | Re-render a conceptual diagram only if its `.mmd` source changes | Keep the SVG/PDF/PNG in sync | Current |
 
 ## 9. Next recommended steps
 
@@ -275,7 +369,8 @@ the colourblind-safe palette; the underlying results (83 higher / 74 lower /
 - **Output locations:** `02-outputs/revision/` (tables, figures, stage CSVs);
   smoke tests via `TSFT_REV_DIR`.
 - **Software and versions:** R 4.4.1; ggplot2 3.5.x; TinyTeX for the PDF
-  build; showtext/sysfonts for fonts.
+  build; showtext/sysfonts for fonts; pele (headless Chromium) only when a
+  conceptual `.mmd` source changes.
 - **Random seeds:** `SEED 20251119`; deterministic per-catchment seeds.
 - **Configuration:** everything in `00_config.R` (bounds, periods, budgets,
   scenario grid, indicator metadata); no paths hard-coded elsewhere.
@@ -301,6 +396,24 @@ the colourblind-safe palette; the underlying results (83 higher / 74 lower /
   format is chosen.
 
 ## 13. Session history
+
+### 20261128 — Figures rebuilt to standard v2; one figure folder; vector manuscript
+
+- **Objective:** adopt the new standards copied into
+  `00_project-info/standards/`; rebuild all figures to the v2 element-size
+  table; consolidate duplicate figure copies; rebuild the manuscript.
+- **Work completed:** v2 theme (10/9/11 hierarchy); 19 data figures redrawn;
+  Figs. 3 and 7 re-laid out as two panels; conceptual outputs
+  moved into the publication folder; `media/` and `si/` duplicates removed;
+  24 includes switched to vector PDF; root `FIGURES.md` created; docs synced;
+  PDF rebuilt (50 pp, 7.1 MB, no float/missing-file warnings).
+- **Results:** one figure source, one register, consistent printed type;
+  no data or statistics changed.
+- **Problems or unresolved issues:** none from this session; the docx was not
+  updated (see §8).
+- **Decisions:** single publication folder; vector includes; Figs. 3 and 7
+  use two-panel layouts.
+- **Next steps:** see §9.
 
 ### 20261127 — Figures rebuilt to the project figure standard
 

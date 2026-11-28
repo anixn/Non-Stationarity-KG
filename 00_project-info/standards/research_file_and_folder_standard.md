@@ -22,6 +22,16 @@ Prioritize:
 Do not introduce complex software-engineering structures unless the
 research genuinely requires them.
 
+**Companion documents.** This file covers *where things live*. The rest of the
+workflow is defined in:
+
+-   `working_file.md` — project workflow, figure production, after-run summary.
+-   `scientific_figure_standard.md` — figure sizes, colours, export, figure
+    description and modification.
+-   `figure_spec_template.md` — one register and one card per figure.
+-   `run_summary_template.md` — the five-question report after every run.
+-   `project_status_template.md` — plain-language status and session history.
+
 ## 2. Standard project structure
 
 Use this simple, numbered structure for new research projects:
@@ -38,6 +48,8 @@ project-name/
 ├── 07_archive/
 ├── README.md
 ├── PROJECT_STATUS.md
+├── RUN_SUMMARY.md
+├── FIGURES.md
 └── .gitignore
 ```
 
@@ -77,6 +89,31 @@ directory trees.
   `07_archive/`                       Superseded material that must be
                                       retained but is no longer active
   -----------------------------------------------------------------------
+
+### Root-level documentation files
+
+  -----------------------------------------------------------------------
+  File                                Purpose
+  ----------------------------------- -----------------------------------
+  `README.md`                         What the project is, structure, how
+                                      to run it
+
+  `PROJECT_STATUS.md`                 Current state, findings, session
+                                      history (plain language)
+
+  `RUN_SUMMARY.md`                    Newest-first log of every run, using
+                                      the five-question report
+
+  `FIGURES.md`                        Figure register: one row per figure
+                                      (number, file, script, data, size,
+                                      status)
+
+  `.gitignore`                        Files that must not be committed
+  -----------------------------------------------------------------------
+
+Create `RUN_SUMMARY.md` and `FIGURES.md` when the project produces its first
+run and its first figure. They are required for any project with more than one
+analysis stage.
 
 Recommended data subfolders, when useful:
 
@@ -260,6 +297,12 @@ Use the separate `scientific_figure_standard.md` for figure design
 whenever it is available. Figures must be reproducible from scripts and
 documented inputs.
 
+Every figure must also appear in the project figure register, `FIGURES.md`:
+one row giving the figure number, file stem, type, one-sentence message,
+source script, input data, size, and status/version. The register is the only
+reliable link from a figure in the manuscript to the code that produced it.
+Use `figure_spec_template.md` to create it.
+
 ## 7. README requirements
 
 Every project must have a root-level `README.md`. It should briefly
@@ -278,14 +321,17 @@ explain:
 
 Keep the README focused on explaining the project and how to navigate or
 run it. Use `PROJECT_STATUS.md` for the changing project state and
-session history.
+session history, `RUN_SUMMARY.md` for the run-by-run log, and `FIGURES.md`
+for the figure register.
 
 ## 8. General rules for OpenCode
 
 ### At the start of work
 
 -   Inspect the existing project structure before changing it.
--   Read `README.md` and `PROJECT_STATUS.md`.
+-   Read `README.md`, `PROJECT_STATUS.md`, and the latest `RUN_SUMMARY.md`
+    entries.
+-   Check `FIGURES.md` before touching any figure.
 -   Review relevant scripts, data descriptions, and previous decisions.
 -   Verify whether pending tasks are actually complete.
 -   Preserve an existing logical structure rather than reorganizing it
@@ -305,6 +351,9 @@ session history.
 ### At the end of work
 
 -   Update `PROJECT_STATUS.md` as specified in that document.
+-   Append a run entry to `RUN_SUMMARY.md` using
+    `run_summary_template.md`.
+-   Update `FIGURES.md` for every figure created or changed.
 -   Update `README.md` if project navigation, execution instructions, or
     dependencies changed.
 -   Report files created, modified, and important outputs.

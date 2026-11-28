@@ -12,8 +12,7 @@ sharpened three-way gap statement verified against a Web of Science search
 ## Build
 
 ```powershell
-# from the repository root D:\Research\Non-Stationarity-KG
-$exe = "$env:LOCALAPPDATA\..\..\Roaming\TinyTeX\bin\windows"   # adjust if needed
+# from the repository root D:\Research\202505_Non_Stationarity_KG
 pdflatex -interaction=nonstopmode -output-directory=03-writeup/Revision-1/latex-v2 03-writeup/Revision-1/latex-v2/manuscript.tex
 # bibtex must run with latex-v2 as working directory (paths in the tex are repo-relative)
 cd 03-writeup/Revision-1/latex-v2; bibtex manuscript; cd ..\..\..
@@ -21,8 +20,8 @@ pdflatex -interaction=nonstopmode -output-directory=03-writeup/Revision-1/latex-
 pdflatex -interaction=nonstopmode -output-directory=03-writeup/Revision-1/latex-v2 03-writeup/Revision-1/latex-v2/manuscript.tex
 ```
 
-Output: `manuscript.pdf` (50 pages). All citations resolve; bibtex warnings
-are cosmetic (three entries have no `journal` field: IPCC report, rpart
+Output: `manuscript.pdf` (50 pages, 2026-11-28). All citations resolve;
+bibtex warnings are cosmetic (three entries have no `journal` field: IPCC report, rpart
 manual, Wilby & Dessai chapter).
 
 ## Files
@@ -31,8 +30,13 @@ manual, Wilby & Dessai chapter).
 |---|---|
 | `manuscript.tex` | buildable source (do not hand-edit citations; regenerate with `../../prior-art/build_v2.py` after changing the blocks there) |
 | `references.bib` | `KG_Bibliography` (deduped) + 34 WOS-verified 2022–2026 additions + 7 verified corrections |
-| `media/`, `si/`, `tables/` | copies of the R1 assets (figures, SI figures, booktabs tables) |
-| `figure-spec/` | FIGURES.md + TYPOGRAPHY_SPEC.md + five `.mmd` flowchart sources (CIMP6 house style) |
+| `tables/` | booktabs tables generated from `02-outputs/revision/tables/` |
+| `figure-spec/` | conceptual `.mmd` + `.svg` sources and `TYPOGRAPHY_SPEC.md`; the live register is the repo-root `FIGURES.md` |
+
+All 24 figure includes read the vector PDFs directly from
+`02-outputs/revision/figures/` (main Figs. 1–14 and SI Figs. S1–S10). The
+old `media/media/` and `si/` copies were removed on 2026-11-28 so there is
+one figure source, not three.
 
 ## What changed vs the earlier pandoc build (`../latex/manuscript.tex`, removed 27 Nov 2026)
 
@@ -62,9 +66,11 @@ manual, Wilby & Dessai chapter).
 
 ## Status
 
-- Flowcharts **rendered** (pele → flattened SVG → rsvg PDF/PNG) in
-  `figures/` and wired into `manuscript.tex` (docx images 3–7 kept in
-  `media/media/` as backup).
+- All figures rebuilt to the v2 element table on 2026-11-28 (axis 10 pt,
+  ticks/legends 9 pt, panel labels 11 pt bold); Fig. 7 re-laid out as two
+  panels so it fits one page at 160 × 134 mm.
+- All 24 figure includes are vector PDFs read from
+  `02-outputs/revision/figures/`; no duplicate copies in the LaTeX tree.
 - Next: optional switch from `apalike` to a journal-specific style at
   submission; the old Journal of Hydrology submission
   (`HYDROL72949.pdf`, 64 pp) and the original Springer LaTeX

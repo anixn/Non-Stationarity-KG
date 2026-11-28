@@ -11,6 +11,10 @@ Analysis / Modelling / Validation / Manuscript preparation / Completed\
 **Current stage:**\
 **Last working session:** YYYYMMDD
 
+> **Companions:** `RUN_SUMMARY.md` holds the run-by-run technical log;
+> this file holds the readable state of the project. `FIGURES.md` holds the
+> figure register. Write the run summary first, then update this file from it.
+
 ------------------------------------------------------------------------
 
 ## 1. What is this study about?
@@ -123,6 +127,9 @@ appropriate.
 **Session objective:**\
 **Session outcome:** Completed / Partially completed / Not completed
 
+> The detailed run entries for this session are in `RUN_SUMMARY.md`.
+> Summarise them here; do not paste the whole log.
+
 ### Work completed
 
 Explain in plain language what was done and why it matters to the study.
@@ -196,6 +203,7 @@ Maintain a concise record of:
 -   **Main scripts and execution order:**
 -   **Input data locations:**
 -   **Output locations:**
+-   **Figure script and register:**
 -   **Software and versions:**
 -   **R package environment / `renv.lock`:**
 -   **Python environment, if applicable:**
@@ -242,15 +250,18 @@ replace the history with only the latest session.
 
 1.  Read `README.md`.
 2.  Read `PROJECT_STATUS.md`.
-3.  Review the latest session and pending tasks.
-4.  Inspect relevant files before assuming the state of the project.
-5.  Verify important claims when necessary.
+3.  Read the latest entries in `RUN_SUMMARY.md` and check `FIGURES.md`.
+4.  Review the latest session and pending tasks.
+5.  Inspect relevant files before assuming the state of the project.
+6.  Verify important claims when necessary.
 
 ### At the end of every working session
 
-Update this file before reporting the session as complete. Include the
-date, objective, work performed, files changed, results, problems,
-decisions, checks performed, and next steps.
+Append a run entry to `RUN_SUMMARY.md` (five-question report), update
+`FIGURES.md` for any figure created or changed, then update this file before
+reporting the session as complete. Include the date, objective, work
+performed, files changed, results, problems, decisions, checks performed, and
+next steps.
 
 Also update the overall project description, stage statuses, findings,
 and limitations if the session changed them.
